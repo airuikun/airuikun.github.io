@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>评判云服务靠谱程度 -- Coding 安全那些事 | Iray&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="云服务真的靠谱吗？相信对这个问题每个人心里都有不同的答案。我今天想讲的是如何客观的去回答这个问题, 其中结合了 Coding 的一些实践和思考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="评判云服务靠谱程度 -- Coding 安全那些事">
+<meta property="og:url" content="http://airuikun.github.io/2015/10/14/cloud-safe/index.html">
+<meta property="og:site_name" content="Iray's blog">
+<meta property="og:description" content="云服务真的靠谱吗？相信对这个问题每个人心里都有不同的答案。我今天想讲的是如何客观的去回答这个问题, 其中结合了 Coding 的一些实践和思考。">
+<meta property="og:image" content="https://dn-coding-net-production-pp.qbox.me/2144f355-cbb5-41e7-ad66-c924ea327a92.png">
+<meta property="og:image" content="https://dn-coding-net-production-pp.qbox.me/2a888a32-889b-412b-b2ff-3da7d9ea61ef.png">
+<meta property="og:updated_time" content="2015-10-14T08:57:23.630Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="评判云服务靠谱程度 -- Coding 安全那些事">
+<meta name="twitter:description" content="云服务真的靠谱吗？相信对这个问题每个人心里都有不同的答案。我今天想讲的是如何客观的去回答这个问题, 其中结合了 Coding 的一些实践和思考。">
+  
+    <link rel="alternative" href="/atom.xml" title="Iray&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iray&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">艾瑞坤的博客 | WEB前端,一路前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://airuikun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cloud-safe" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/14/cloud-safe/" class="article-date">
+  <time datetime="2015-10-14T08:48:00.000Z" itemprop="datePublished">2015-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      评判云服务靠谱程度 -- Coding 安全那些事
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="云服务真的靠谱吗？">云服务真的靠谱吗？</h3><p>相信对这个问题每个人心里都有不同的答案。我今天想讲的是如何客观的去回答这个问题, 其中结合了 Coding 的一些实践和思考。</p>
+<img src="https://dn-coding-net-production-pp.qbox.me/2144f355-cbb5-41e7-ad66-c924ea327a92.png">
+<a id="more"></a>
+<h3 id="广义范围的“靠谱”_有几个比较重要的点。">广义范围的“靠谱” 有几个比较重要的点。</h3><p>第一个点就是 <strong>Availability （可用性）</strong>，24x7随时可用。一个靠谱的云服务一定是可用性非常高的。 第二点是 <strong>Access Control</strong>，可控性一定要好，非云服务你可以上个锁，云服务如何能做到可控性很好，很难。 第三点是 <strong>灾难恢复</strong>，是软件就会有问题。怎么样积极的面对这个问题，这是任何一个云厂商都要诚实面对的问题。</p>
+<h3 id="可用性">可用性</h3><p>首先第一点我们看来讲一下可用性，可用性只有一个评判标准，就是 SLA，Service Level Agreement，更多的时候是 SLO, 只是 Objective。 一个东西是不是高可用，那么就问他几个九，敢不敢拿出来说一下。</p>
+<img src="https://dn-coding-net-production-pp.qbox.me/2a888a32-889b-412b-b2ff-3da7d9ea61ef.png">
+<p>实实在在的看着这个图说话，3个9基本上是国内云服务的基础线。也就是说<strong>云服务至少要做到3个9才称为基本上可用</strong>，是合格性产品。如果是做不到这个，你的东西就只是玩具，快回去好好把技术内功修炼修炼再出来刷脸。从3个9迈向4个9，也就是99.99%的可用性，每年只有52.6分钟的时间是不可用的。 以前的谷歌搜索可用度大概是全球5个9到6个9之间，每一个小节点都是5个9不到6个9之间。想想吧，这其实是很可怕的一个概念。<strong>因为这里包含了可能发生的一切事故</strong>，不管什么不可抗力，都是扯淡。地震、洪水、台风、大楼震塌了，也是5分钟内恢复服务。 相比之下，大部分国内的IDC机房都是按照99%设计的，一年至少3天是不可用，这3天给你花在元旦一天，春节一天，国庆一天，省点时间给你机动(笑)。这里不可用就是不可用，求爷爷告奶奶也照样不能用。</p>
+<h3 id="所以说_SLO_直接反映一个云服务的靠谱程度：">所以说 SLO 直接反映一个云服务的靠谱程度：</h3><p>从99%到3个9，是基本可以靠堆人和运气解决的； 从3个9到4个9，考验的是运维自动化的能力，灾备的能力； 从4个9往上基本考验的是服务基础架构、业务设计的能力。 我们也在3个9到4个9之间努力, 这个还是很有难度的。如果一个云服务厂商在注释里加了句“不可抗力排除在外”，这是非常不合适的。</p>
+<h3 id="那么如何提升可用性：">那么如何提升可用性：</h3><p><strong>Design For Redundancy</strong>, 第一是一定要做到所谓的“<strong>无状态微服务</strong>”，去掉单点故障。 ……</p>
+<p>###（此处省略N多字）</p>
+<p>阅读全文<a href="https://blog.coding.net/blog/reliability-of-cloud-service-safety-issue-of-Coding" target="_blank" rel="external">点击这里</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://airuikun.github.io/2015/10/14/cloud-safe/" data-id="cifqkfv98000e10maprjari2k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/14/hexo-study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo快速入门 —— 静态博客框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/分享/" style="font-size: 20px;">分享</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/10/14/cloud-safe/">评判云服务靠谱程度 -- Coding 安全那些事</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/14/hexo-study/">hexo快速入门 —— 静态博客框架</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/14/OOCSS/">什么是面向对象的CSS(OOCSS)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/14/component/">Web应用的组件化开发</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/14/angular/">AngularJS 优秀文章汇总</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Iray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
