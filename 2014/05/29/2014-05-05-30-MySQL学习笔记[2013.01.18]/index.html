@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MySQL学习笔记 | Iray&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库相关概念数据库（Database）保存有组织的数据的容器（通常是一个文件或一组文件）。
+表（Table）某种特定类型数据的结构化清单。
+列（Column）表中的一个字段。所有表都是由一个或多个列组成的。
+行（Row）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL学习笔记">
+<meta property="og:url" content="http://airuikun.github.io/2014/05/29/2014-05-05-30-MySQL学习笔记[2013.01.18]/index.html">
+<meta property="og:site_name" content="Iray's blog">
+<meta property="og:description" content="数据库相关概念数据库（Database）保存有组织的数据的容器（通常是一个文件或一组文件）。
+表（Table）某种特定类型数据的结构化清单。
+列（Column）表中的一个字段。所有表都是由一个或多个列组成的。
+行（Row）">
+<meta property="og:updated_time" content="2016-04-25T08:42:28.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL学习笔记">
+<meta name="twitter:description" content="数据库相关概念数据库（Database）保存有组织的数据的容器（通常是一个文件或一组文件）。
+表（Table）某种特定类型数据的结构化清单。
+列（Column）表中的一个字段。所有表都是由一个或多个列组成的。
+行（Row）">
+  
+    <link rel="alternative" href="/atom.xml" title="Iray&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iray&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">艾瑞坤的博客 | WEB前端,一路前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://airuikun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2014-05-05-30-MySQL学习笔记[2013.01.18]" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/29/2014-05-05-30-MySQL学习笔记[2013.01.18]/" class="article-date">
+  <time datetime="2014-05-29T08:31:35.000Z" itemprop="datePublished">2014-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库相关概念">数据库相关概念</h2><h3 id="数据库（Database）">数据库（Database）</h3><p>保存有组织的数据的容器（通常是一个文件或一组文件）。</p>
+<h3 id="表（Table）">表（Table）</h3><p>某种特定类型数据的结构化清单。</p>
+<h3 id="列（Column）">列（Column）</h3><p>表中的一个字段。所有表都是由一个或多个列组成的。</p>
+<h3 id="行（Row）">行（Row）</h3><a id="more"></a>
+<p>表中的一个记录。</p>
+<h3 id="主键（Primary_Key）">主键（Primary Key）</h3><p>一列（或一组列），其值能够唯一区分表中每个行。</p>
+<p>最好保证创建的每个表都具有一个主键，以便于管理和维护。</p>
+<p>列作为主键，需要满足以下条件：</p>
+<ul>
+<li><p>任意两行都不具有相同的主键值；</p>
+</li>
+<li><p>每个行都必须具有一个主键值（主键列不允许NULL值）。</p>
+</li>
+</ul>
+<p>几个主键的好习惯：</p>
+<ul>
+<li><p>不更新主键列中的值；</p>
+</li>
+<li><p>不重用主键列的值；</p>
+</li>
+<li><p>不再主键列中使用可能会更改的值。</p>
+</li>
+</ul>
+<h2 id="获得数据库和表的信息">获得数据库和表的信息</h2><h3 id="查看所有数据库">查看所有数据库</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span>;</span>
+</code></pre><h3 id="使用数据库">使用数据库</h3><pre><code><span class="keyword">USE</span> <span class="title">dbname</span>;
+</code></pre><h3 id="查看一个数据库内的表的列表">查看一个数据库内的表的列表</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span>;</span>
+</code></pre><h3 id="显示表列">显示表列</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">COLUMNS</span> <span class="keyword">FROM</span> customers;</span>
+</code></pre><p>或</p>
+<pre><code><span class="operator"><span class="keyword">DESCRIBE</span> customers;</span>
+</code></pre><p>要求提供一个表名。</p>
+<h3 id="显示服务器状态信息">显示服务器状态信息</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span>;</span>
+</code></pre><h3 id="显示授予用户的安全权限">显示授予用户的安全权限</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span>;</span>
+</code></pre><h3 id="显示服务器错误或警告">显示服务器错误或警告</h3><pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">ERRORS</span>;</span>
+<span class="operator"><span class="keyword">SHOW</span> <span class="keyword">WARNINGS</span>;</span>
+</code></pre><h2 id="检索数据">检索数据</h2><h3 id="检索单个列">检索单个列</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p>上述语句利用 <code>SELECT</code> 从 <code>products</code> 表中检索一个名为 <code>prod_name</code> 的列，注意，这个输出是未排序的。</p>
+<h3 id="检索多个列">检索多个列</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, prod_name, prod_price
+<span class="keyword">FROM</span> products;</span>
+</code></pre><h3 id="检索所有列">检索所有列</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> *
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p>注意，检索不需要的列通常会降低应用程序的性能。</p>
+<h3 id="检索不同的行">检索不同的行</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> vend_id
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p><br></p>
+<pre><code>+---------+
+|<span class="string"> vend_id </span>|
++---------+
+|<span class="string">    1001 </span>|
+|<span class="string">    1001 </span>|
+|<span class="string">    1001 </span>|
+|<span class="string">    1002 </span>|
+|<span class="string">    1002 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1003 </span>|
+|<span class="string">    1005 </span>|
+|<span class="string">    1005 </span>|
++---------+
+14 rows in set (0.00 sec)
+</code></pre><p>当需要检索不同值的列表时，用关键字 <code>DISTINCT</code> 指示MySQL，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> vend_id
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------+</span>
+<span class="header">| vend_id |
++---------+</span>
+|    1001 |
+|    1002 |
+|    1003 |
+<span class="header">|    1005 |
++---------+</span>
+4 rows in set (0.00 sec)
+</code></pre><p>注意， <code>DISTINCT</code> 关键字应用于所有列，而不仅是前置它的列。</p>
+<h3 id="限制输出结果">限制输出结果</h3><p>为了返回结果中的某些行，可以使用 <code>LIMIT</code> 子句，如下（返回所有结果中的前五行）：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">LIMIT</span> <span class="number">5</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+| .5 ton anvil |
+| 1 ton anvil  |
+| 2 ton anvil  |
+| Detonator    |
+<span class="header">| Bird seed    |
++--------------+</span>
+5 rows in set (0.00 sec)
+</code></pre><p>如果希望返回所有结果中的从行3开始的5行，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">LIMIT</span> <span class="number">3</span>, <span class="number">5</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+| Detonator    |
+| Bird seed    |
+| Carrots      |
+| Fuses        |
+<span class="header">| JetPack 1000 |
++--------------+</span>
+5 rows in set (0.00 sec)
+</code></pre><p>注意，检索出来的第一行是行0，而不是行1。</p>
+<p>一种替代语法，比如需要从行3开始取4行，可以使用如下语句：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">LIMIT</span> <span class="number">4</span> <span class="keyword">OFFSET</span> <span class="number">3</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-----------+</span>
+<span class="header">| prod_name |
++-----------+</span>
+| Detonator |
+| Bird seed |
+| Carrots   |
+<span class="header">| Fuses     |
++-----------+</span>
+4 rows in set (0.00 sec)
+</code></pre><h2 id="排序检索数据">排序检索数据</h2><h3 id="排序数据">排序数据</h3><pre><code><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name
+</code></pre><p>这条语句指示MySQL对 <code>prod_name</code> 列以字母顺序排序。</p>
+<h3 id="按多个列排序">按多个列排序</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, prod_price, prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_price, prod_name;</span>
+</code></pre><p>多关键字排序，仅在多个行具有相同的 <code>prod_price</code> 值时才对产品按 <code>prod_name</code> 排序。</p>
+<h3 id="指定排序方向">指定排序方向</h3><p>以价格降序排列：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, prod_price, prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_price <span class="keyword">DESC</span>;</span>
+</code></pre><p>注意， <code>DESC</code> 关键字只应用到直接位于其前面的列名，如果想在多个列上进行降序排序，需要对每个列指定 <code>DESC</code> 关键字。</p>
+<p>使用 <code>ORDER BY</code> 和 <code>LIMIT</code> 的组合，可以找出最大或最小值。</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_price
+<span class="keyword">FROM</span> products
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_price <span class="keyword">DESC</span>
+<span class="keyword">LIMIT</span> <span class="number">1</span>;</span>
+</code></pre><p><code>ORDER BY</code> 子句应保证位于 <code>FROM</code> 子句之后，同时也应保证位于 <code>LIMIT</code> 之前。</p>
+<h2 id="过滤数据">过滤数据</h2><h3 id="使用WHERE子句">使用WHERE子句</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name, prod_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_price = <span class="number">2.50</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------------+</span>------------+
+<span class="header">| prod_name     | prod_price |
++---------------+------------+</span>
+| Carrots       |       2.50 |
+<span class="header">| TNT (1 stick) |       2.50 |
++---------------+------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><p>这条语句从 <code>products</code> 表中检索两个列，只返回 <code>prod_price</code> 值为2.50的行。</p>
+<p>在使用 <code>ORDER BY</code> 和 <code>WHERE</code> 子句时，应该让 <code>ORDER BY</code> 位于 <code>WHERE</code> 之后。</p>
+<p>操作符有 <code>=</code> 、 <code>&lt;&gt;</code> 、 <code>!=</code> 、 <code>&lt;</code> 、 <code>&lt;=</code> 、 <code>&gt;</code> 、 <code>&gt;=</code> 、 <code>BETWEEN</code> ，只说下 <code>BETWEEN</code> ，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name, prod_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_price <span class="keyword">BETWEEN</span> <span class="number">5</span> <span class="keyword">AND</span> <span class="number">10</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+----------------+</span>------------+
+<span class="header">| prod_name      | prod_price |
++----------------+------------+</span>
+| .5 ton anvil   |       5.99 |
+| 1 ton anvil    |       9.99 |
+| Bird seed      |      10.00 |
+| Oil can        |       8.99 |
+<span class="header">| TNT (5 sticks) |      10.00 |
++----------------+------------+</span>
+5 rows in set (0.00 sec)
+</code></pre><h3 id="空值检查">空值检查</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> cust_id, cust_city, cust_email
+<span class="keyword">FROM</span> customers
+<span class="keyword">WHERE</span> cust_email <span class="keyword">IS</span> <span class="literal">NULL</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------+</span>-----------<span class="code">+------------+</span>
+<span class="header">| cust_id | cust_city | cust_email |
++---------+-----------+------------+</span>
+|   10002 | Columbus  | NULL       |
+<span class="header">|   10005 | Chicago   | NULL       |
++---------+-----------+------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><h3 id="组合WHERE子句">组合WHERE子句</h3><p>对于 <code>AND</code> 、 <code>OR</code> ，注意 <code>AND</code> 的优先级比 <code>OR</code> 高。</p>
+<p><code>IN</code> 操作符示例：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> vend_id, prod_name, prod_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> vend_id <span class="keyword">IN</span> (<span class="number">1002</span>, <span class="number">1003</span>)
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code>+---------+----------------+------------+
+|<span class="string"> vend_id </span>|<span class="string"> prod_name      </span>|<span class="string"> prod_price </span>|
++---------+----------------+------------+
+|<span class="string">    1003 </span>|<span class="string"> Bird seed      </span>|<span class="string">      10.00 </span>|
+|<span class="string">    1003 </span>|<span class="string"> Carrots        </span>|<span class="string">       2.50 </span>|
+|<span class="string">    1003 </span>|<span class="string"> Detonator      </span>|<span class="string">      13.00 </span>|
+|<span class="string">    1002 </span>|<span class="string"> Fuses          </span>|<span class="string">       3.42 </span>|
+|<span class="string">    1002 </span>|<span class="string"> Oil can        </span>|<span class="string">       8.99 </span>|
+|<span class="string">    1003 </span>|<span class="string"> Safe           </span>|<span class="string">      50.00 </span>|
+|<span class="string">    1003 </span>|<span class="string"> Sling          </span>|<span class="string">       4.49 </span>|
+|<span class="string">    1003 </span>|<span class="string"> TNT (1 stick)  </span>|<span class="string">       2.50 </span>|
+|<span class="string">    1003 </span>|<span class="string"> TNT (5 sticks) </span>|<span class="string">      10.00 </span>|
++---------+----------------+------------+
+9 rows in set (0.00 sec)
+</code></pre><p><code>NOT</code> 操作符示例：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> vend_id, prod_name, prod_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> vend_id <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="number">1002</span>, <span class="number">1003</span>)
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code>+---------+--------------+------------+
+|<span class="string"> vend_id </span>|<span class="string"> prod_name    </span>|<span class="string"> prod_price </span>|
++---------+--------------+------------+
+|<span class="string">    1001 </span>|<span class="string"> .5 ton anvil </span>|<span class="string">       5.99 </span>|
+|<span class="string">    1001 </span>|<span class="string"> 1 ton anvil  </span>|<span class="string">       9.99 </span>|
+|<span class="string">    1001 </span>|<span class="string"> 2 ton anvil  </span>|<span class="string">      14.99 </span>|
+|<span class="string">    1005 </span>|<span class="string"> JetPack 1000 </span>|<span class="string">      35.00 </span>|
+|<span class="string">    1005 </span>|<span class="string"> JetPack 2000 </span>|<span class="string">      55.00 </span>|
++---------+--------------+------------+
+5 rows in set (0.00 sec)
+</code></pre><h3 id="用通配符进行过滤">用通配符进行过滤</h3><p>百分号（ <code>%</code> ）表示任何字符出现任意次数。</p>
+<p>例如找出所有以词 <code>jet</code> 起头的产品名字：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name <span class="keyword">LIKE</span> <span class="string">'jet%'</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------+</span>--------------+
+<span class="header">| prod_id | prod_name    |
++---------+--------------+</span>
+| JP1000  | JetPack 1000 |
+<span class="header">| JP2000  | JetPack 2000 |
++---------+--------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><p>下划线（ <code>_</code> ）表示只匹配单个任意字符。</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name <span class="keyword">LIKE</span> <span class="string">'_ ton anvil'</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------+</span>-------------+
+<span class="header">| prod_id | prod_name   |
++---------+-------------+</span>
+| ANV02   | 1 ton anvil |
+<span class="header">| ANV03   | 2 ton anvil |
++---------+-------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><h3 id="用正则表达式进行过滤">用正则表达式进行过滤</h3><h4 id="基本字符匹配">基本字符匹配</h4><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'1000'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+<span class="header">| JetPack 1000 |
++--------------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>在 <code>LIKE</code> 和 <code>REGEXP</code> 之间有一个重要的差别，就是 <code>LIKE</code> 会匹配整个列，如果被匹配的文本仅在列值中出现， <code>LIKE</code> 不会找到它，而 <code>REGEXP</code> 在列值内进行匹配，如果被匹配的文本在列值中出现， <code>REGEXP</code> 就会找到它。</p>
+<p>默认情况下，MySQL中的正则表达式匹配不区分大小写，如果需要区分大小写，可使用 <code>BINARY</code> 关键字，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="built_in">BINARY</span> <span class="string">'JetPack .000'</span>;</span>
+</code></pre><p>这里的 <code>.</code> 表示匹配任意一个字符。</p>
+<h4 id="进行OR匹配">进行OR匹配</h4><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'1000|2000'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+| JetPack 1000 |
+<span class="header">| JetPack 2000 |
++--------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><h4 id="匹配几个字符之一">匹配几个字符之一</h4><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'[123] Ton'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-------------+</span>
+<span class="header">| prod_name   |
++-------------+</span>
+| 1 ton anvil |
+<span class="header">| 2 ton anvil |
++-------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><p>字符集合也可以否定，只需要在集合开始处放置一个 <code>^</code> 即可，比如 <code>[^123]</code> 。</p>
+<p>可以用 <code>-</code> 来定义一个范围，比如 <code>[0-9]</code> 匹配数字0到9。</p>
+<p>如果需要匹配特殊字符，则需要用为前导，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> vend_name
+<span class="keyword">FROM</span> vendors
+<span class="keyword">WHERE</span> vend_name REGEXP <span class="string">'.'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> vend_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| vend_name    |
++--------------+</span>
+<span class="header">| Furball Inc. |
++--------------+</span>
+1 row in set (0.00 sec)
+</code></pre><h4 id="匹配字符类">匹配字符类</h4><p>预定义的字符类如下：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[:alnum:]</code></td>
+<td>任意字母和数字（同 <code>[a-zA-Z0-9]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:alpha:]</code></td>
+<td>任意字符（同 <code>[a-zA-Z]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:blank:]</code></td>
+<td>空格和制表（同 <code>[t]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:cntrl:]</code></td>
+<td>ASCII控制字符（ASCII 0到31和127）</td>
+</tr>
+<tr>
+<td><code>[:digit:]</code></td>
+<td>任意数字（同 <code>[0-9]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:graph:]</code></td>
+<td>任意可打印字符，但不包括空格</td>
+</tr>
+<tr>
+<td><code>[:lower:]</code></td>
+<td>任意小写字母（同 <code>[a-z]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:print:]</code></td>
+<td>任意可打印字符</td>
+</tr>
+<tr>
+<td><code>[:punct:]</code></td>
+<td>既不在 <code>[:alnum:]</code> 又不在 <code>[:cntrl:]</code> 中的任意字符</td>
+</tr>
+<tr>
+<td><code>[:space:]</code></td>
+<td>包括空格在内的任意空白字符（同 <code>[fnrtv]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:upper:]</code></td>
+<td>任意大写字母（同 <code>[A-Z]</code> ）</td>
+</tr>
+<tr>
+<td><code>[:xdigit:]</code></td>
+<td>任意十六进制数字（同 <code>[a-fA-F0-9]</code> ）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="匹配多个实例">匹配多个实例</h4><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>0个或多个匹配</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1个或多个匹配</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>0个或1个匹配</td>
+</tr>
+<tr>
+<td><code>{n}</code></td>
+<td>指定数目的匹配</td>
+</tr>
+<tr>
+<td><code>{n,}</code></td>
+<td>不少于指定数目的匹配</td>
+</tr>
+<tr>
+<td><code>{n,m}</code></td>
+<td>匹配数目的范围（ <code>m</code> 不超过255）</td>
+</tr>
+</tbody>
+</table>
+<p>比如下面这个例子：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'([0-9] sticks?)'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+----------------+</span>
+<span class="header">| prod_name      |
++----------------+</span>
+| TNT (1 stick)  |
+<span class="header">| TNT (5 sticks) |
++----------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><p><code>s</code> 后面的 <code>?</code> 使得 <code>s</code> 可选，因为 <code>?</code> 匹配0个或1个。</p>
+<p>下面的例子匹配连在一起的4位数字：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'[[:digit:]]{4}'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+| JetPack 1000 |
+<span class="header">| JetPack 2000 |
++--------------+</span>
+2 rows in set (0.00 sec)
+</code></pre><h4 id="定位符">定位符</h4><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>文本的开始</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>文本的结尾</td>
+</tr>
+<tr>
+<td><code>[[:&lt;:]]</code></td>
+<td>词的开始</td>
+</tr>
+<tr>
+<td><code>[[:&gt;:]]</code></td>
+<td>词的结尾</td>
+</tr>
+</tbody>
+</table>
+<p>下面的例子找出一个数（包括以小数点开始的数）开始的所有产品名称：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> prod_name
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> prod_name REGEXP <span class="string">'^[0-9.]'</span>
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+--------------+</span>
+<span class="header">| prod_name    |
++--------------+</span>
+| .5 ton anvil |
+| 1 ton anvil  |
+<span class="header">| 2 ton anvil  |
++--------------+</span>
+3 rows in set (0.00 sec)
+</code></pre><h2 id="创建计算字段">创建计算字段</h2><h3 id="拼接字段">拼接字段</h3><p>利用多个列的内容组合出一个列返回，使用 <code>Concat()</code> 函数来拼接，如下：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">Concat</span>(vend_name, <span class="string">'('</span>, vend_country, <span class="string">')'</span>)
+<span class="keyword">FROM</span> vendors
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> vend_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-------------------------------------------+</span>
+<span class="header">| Concat(vend_name, '(', vend_country, ')') |
++-------------------------------------------+</span>
+| ACME(USA)                                 |
+| Anvils R Us(USA)                          |
+| Furball Inc.(USA)                         |
+| Jet Set(England)                          |
+| Jouets Et Ours(France)                    |
+<span class="header">| LT Supplies(USA)                          |
++-------------------------------------------+</span>
+6 rows in set (0.00 sec)
+</code></pre><p>至于清理多余空格，可以用 <code>Trim()</code> 、 <code>LTrim()</code> 、 <code>RTrim()</code> 来完成。</p>
+<p>上面的例子中计算列没有名字，不能用于客户机的应用，可以用 <code>AS</code> 关键字赋予其别名。</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">Concat</span>(<span class="keyword">RTrim</span>(vend_name), <span class="string">'('</span>, <span class="keyword">RTrim</span>(vend_country), <span class="string">')'</span>) <span class="keyword">AS</span> vend_title
+<span class="keyword">FROM</span> vendors
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> vend_name;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+------------------------+</span>
+<span class="header">| vend_title             |
++------------------------+</span>
+| ACME(USA)              |
+| Anvils R Us(USA)       |
+| Furball Inc.(USA)      |
+| Jet Set(England)       |
+| Jouets Et Ours(France) |
+<span class="header">| LT Supplies(USA)       |
++------------------------+</span>
+6 rows in set (0.00 sec)
+</code></pre><p>这个 <code>vend_title</code> 就像实际的列一样。</p>
+<h3 id="执行算数运算">执行算数运算</h3><pre><code><span class="operator"><span class="keyword">SELECT</span> prod_id, quantity, item_price, quantity*item_price <span class="keyword">AS</span> expanded_price
+<span class="keyword">FROM</span> orderitems
+<span class="keyword">WHERE</span> order_num = <span class="number">20005</span>;</span>
+</code></pre><p><br></p>
+<pre><code>+---------+----------+------------+----------------+
+|<span class="string"> prod_id </span>|<span class="string"> quantity </span>|<span class="string"> item_price </span>|<span class="string"> expanded_price </span>|
++---------+----------+------------+----------------+
+|<span class="string"> ANV01   </span>|<span class="string">       10 </span>|<span class="string">       5.99 </span>|<span class="string">          59.90 </span>|
+|<span class="string"> ANV02   </span>|<span class="string">        3 </span>|<span class="string">       9.99 </span>|<span class="string">          29.97 </span>|
+|<span class="string"> TNT2    </span>|<span class="string">        5 </span>|<span class="string">      10.00 </span>|<span class="string">          50.00 </span>|
+|<span class="string"> FB      </span>|<span class="string">        1 </span>|<span class="string">      10.00 </span>|<span class="string">          10.00 </span>|
++---------+----------+------------+----------------+
+4 rows in set (0.03 sec)
+</code></pre><h2 id="使用数据处理函数">使用数据处理函数</h2><h3 id="文本处理函数">文本处理函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Left()</code></td>
+<td>返回串左边的字符</td>
+</tr>
+<tr>
+<td><code>Length()</code></td>
+<td>返回串的长度</td>
+</tr>
+<tr>
+<td><code>Locate()</code></td>
+<td>找出串的一个子串</td>
+</tr>
+<tr>
+<td><code>Lower()</code></td>
+<td>将串转换为小写</td>
+</tr>
+<tr>
+<td><code>LTrim()</code></td>
+<td>去掉串左边的空格</td>
+</tr>
+<tr>
+<td><code>Right()</code></td>
+<td>返回串右边的字符</td>
+</tr>
+<tr>
+<td><code>RTrim()</code></td>
+<td>去掉串右边的空格</td>
+</tr>
+<tr>
+<td><code>Soundex()</code></td>
+<td>返回串的 <code>SOUNDEX</code> 值</td>
+</tr>
+<tr>
+<td><code>SubString()</code></td>
+<td>返回子串的字符</td>
+</tr>
+<tr>
+<td><code>Upper()</code></td>
+<td>将串转换为大写</td>
+</tr>
+</tbody>
+</table>
+<p>其中， <code>SOUNDEX</code> 是一个能对串的发音比较而不是进行字母比较，比如下面的例子：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> cust_name, cust_contact
+<span class="keyword">FROM</span> customers
+<span class="keyword">WHERE</span> <span class="keyword">Soundex</span>(cust_contact) = <span class="keyword">Soundex</span>(<span class="string">'Y Lie'</span>);</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-------------+</span>--------------+
+<span class="header">| cust_name   | cust_contact |
++-------------+--------------+</span>
+<span class="header">| Coyote Inc. | Y Lee        |
++-------------+--------------+</span>
+1 row in set (0.05 sec)
+</code></pre><p>其中， <code>WHERE</code> 子句使用 <code>Soundex()</code> 函数来转换 <code>cust_contact</code> 列值和搜索串为它们的 <code>SOUNDEX</code> 值，因为 <code>Y Lie</code> 和  <code>Y Lee</code> 发音相似，所以它们的 <code>SOUNDEX</code> 值匹配。</p>
+<h3 id="日期和时间处理函数">日期和时间处理函数</h3><p>常用的日期和时间处理函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddDate()</code></td>
+<td>增加一个日期（天、周等）</td>
+</tr>
+<tr>
+<td><code>AddTime()</code></td>
+<td>增加一个时间（时、分等）</td>
+</tr>
+<tr>
+<td><code>CurDate()</code></td>
+<td>返回当前日期</td>
+</tr>
+<tr>
+<td><code>CurTime()</code></td>
+<td>返回当前时间</td>
+</tr>
+<tr>
+<td><code>Date()</code></td>
+<td>返回日期时间的日期部分</td>
+</tr>
+<tr>
+<td><code>DateDiff()</code></td>
+<td>计算两个日期之差</td>
+</tr>
+<tr>
+<td><code>Date_Add()</code></td>
+<td>高度灵活的日期运算函数</td>
+</tr>
+<tr>
+<td><code>Date_Format()</code></td>
+<td>返回一个格式化的日期或时间串</td>
+</tr>
+<tr>
+<td><code>Day()</code></td>
+<td>返回一个日期的天数部分</td>
+</tr>
+<tr>
+<td><code>DayOfWeek()</code></td>
+<td>对于一个日期，返回对应的星期几</td>
+</tr>
+<tr>
+<td><code>Hour()</code></td>
+<td>返回一个时间的小时部分</td>
+</tr>
+<tr>
+<td><code>Minute()</code></td>
+<td>返回一个时间的分钟部分</td>
+</tr>
+<tr>
+<td><code>Month()</code></td>
+<td>返回一个日期的月份部分</td>
+</tr>
+<tr>
+<td><code>Now()</code></td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td><code>Second()</code></td>
+<td>返回一个时间的秒部分</td>
+</tr>
+<tr>
+<td><code>Time()</code></td>
+<td>返回一个日期时间的时间部分</td>
+</tr>
+<tr>
+<td><code>Year()</code></td>
+<td>返回一个日期的年份部分</td>
+</tr>
+</tbody>
+</table>
+<p>注意MySQL使用的日期格式，必须为 <code>yyyy-mm-dd</code> ，虽然支持两位数字的年份，但应该总是使用四位数的年份。</p>
+<p>基本的日期示例：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> cust_id, order_num
+<span class="keyword">FROM</span> orders
+<span class="keyword">WHERE</span> order_date = <span class="string">'2005-09-01'</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+---------+</span>-----------+
+<span class="header">| cust_id | order_num |
++---------+-----------+</span>
+<span class="header">|   10001 |     20005 |
++---------+-----------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>但这是不可靠的，如果 <code>order_date</code> 值为 <code>2005-09-01 12:00:00</code> ，那么 <code>WHERE</code> 匹配就会失败，所以应该用上面的函数来进行提取，然后再进行比较：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> cust_id, order_num
+<span class="keyword">FROM</span> orders
+<span class="keyword">WHERE</span> <span class="built_in">Date</span>(order_date) = <span class="string">'2005-09-01'</span>;</span>
+</code></pre><p>如果想检索出2005年9月的所有订单，可以这么写：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> cust_id, order_num
+<span class="keyword">FROM</span> orders
+<span class="keyword">WHERE</span> <span class="built_in">Date</span>(order_date) <span class="keyword">BETWEEN</span> <span class="string">'2005-09-01'</span> <span class="keyword">AND</span> <span class="string">'2005-09-30'</span>;</span>
+</code></pre><p>另一种方法是这么写：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> cust_id, order_num
+<span class="keyword">FROM</span> orders
+<span class="keyword">WHERE</span> <span class="keyword">Year</span>(order_date) = <span class="number">2005</span> <span class="keyword">AND</span> <span class="keyword">Month</span>(order_date) = <span class="number">9</span>;</span>
+</code></pre><h3 id="数值处理函数">数值处理函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Abs()</code></td>
+<td>返回一个数的绝对值</td>
+</tr>
+<tr>
+<td><code>Cos()</code></td>
+<td>返回一个角度的余弦</td>
+</tr>
+<tr>
+<td><code>Exp()</code></td>
+<td>返回一个数的指数值</td>
+</tr>
+<tr>
+<td><code>Mod()</code></td>
+<td>返回除操作的余数</td>
+</tr>
+<tr>
+<td><code>Pi()</code></td>
+<td>返回圆周率</td>
+</tr>
+<tr>
+<td><code>Rand()</code></td>
+<td>返回一个随机数</td>
+</tr>
+<tr>
+<td><code>Sin()</code></td>
+<td>返回一个角度的正弦</td>
+</tr>
+<tr>
+<td><code>Sqrt()</code></td>
+<td>返回一个数的平方根</td>
+</tr>
+<tr>
+<td><code>Tan()</code></td>
+<td>返回一个角度的正切</td>
+</tr>
+</tbody>
+</table>
+<h2 id="汇总数据">汇总数据</h2><h3 id="聚集函数">聚集函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AVG()</code></td>
+<td>返回某列的平均值</td>
+</tr>
+<tr>
+<td><code>COUNT()</code></td>
+<td>返回某列的行数</td>
+</tr>
+<tr>
+<td><code>MAX()</code></td>
+<td>返回某列的最大值</td>
+</tr>
+<tr>
+<td><code>MIN()</code></td>
+<td>返回某列的最小值</td>
+</tr>
+<tr>
+<td><code>SUM()</code></td>
+<td>返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+<h4 id="AVG()函数">AVG()函数</h4><pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(prod_price) <span class="keyword">AS</span> avg_price
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-----------+</span>
+<span class="header">| avg_price |
++-----------+</span>
+<span class="header">| 16.133571 |
++-----------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>当然可以和 <code>WHERE</code> 组合来确定特定行的平均值。</p>
+<p>注意： <code>AVG()</code> 函数忽略列值为 <code>NULL</code> 的行。</p>
+<h4 id="COUNT()函数">COUNT()函数</h4><p>有两种使用方式，当使用 <code>COUNT(*)</code> 对表中的数目进行计数，不管表列中包含的是 <code>NULL</code> 还是非空值；而是用 <code>COUNT(column)</code> 对特定列中具有的值进行计数，忽略 <code>NULL</code> 值。</p>
+<p>比如下面的例子返回 <code>customers</code> 表的总人数：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> num_cust
+<span class="keyword">FROM</span> customers;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+----------+</span>
+<span class="header">| num_cust |
++----------+</span>
+<span class="header">|        5 |
++----------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>下面的例子只对有电子邮件地址的人计数：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(cust_email) <span class="keyword">AS</span> num_cust
+<span class="keyword">FROM</span> customers;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+----------+</span>
+<span class="header">| num_cust |
++----------+</span>
+<span class="header">|        3 |
++----------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>而实际上的表是这样的：</p>
+<pre><code>mysql&gt; SELECT cust<span class="emphasis">_id, cust_</span>email
+<span class="header">    -&gt; FROM customers;
++---------+---------------------+</span>
+<span class="header">| cust_id | cust_email          |
++---------+---------------------+</span>
+|   10001 | ylee@coyote.com     |
+|   10002 | NULL                |
+|   10003 | rabbit@wascally.com |
+|   10004 | sam@yosemite.com    |
+<span class="header">|   10005 | NULL                |
++---------+---------------------+</span>
+5 rows in set (0.00 sec)
+</code></pre><h4 id="MAX()、MIN()、SUM()函数">MAX()、MIN()、SUM()函数</h4><pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(prod_price) <span class="keyword">AS</span> min_price
+<span class="keyword">FROM</span> products;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-----------+</span>
+<span class="header">| min_price |
++-----------+</span>
+<span class="header">|      2.50 |
++-----------+</span>
+1 row in set (0.01 sec)
+</code></pre><p>它们都会忽略列值为 <code>NULL</code> 的行。</p>
+<h4 id="聚集不同值">聚集不同值</h4><p>对于上面的 <code>AVG()</code> 、 <code>SUM()</code> 、 <code>MIN()</code> 、 <code>MAX()</code> 、 <code>COUNT()</code> 聚集函数，都有两个参数可用：</p>
+<p>对所有的行执行计算，指定 <code>ALL</code> 参数或者不给参数（默认）；<br>只包含不同的值，指定 <code>DISTINCT</code> 参数。</p>
+<p>比如 <code>AVG()</code> 函数使用 <code>DISTINCT</code> 参数的示例：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">DISTINCT</span> prod_price) <span class="keyword">AS</span> avg_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> vend_id = <span class="number">1003</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-----------+</span>
+<span class="header">| avg_price |
++-----------+</span>
+<span class="header">| 15.998000 |
++-----------+</span>
+1 row in set (0.03 sec)
+</code></pre><p>而不使用 <code>DISTINCT</code> 的时候的平均值是：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(prod_price) <span class="keyword">AS</span> avg_price
+<span class="keyword">FROM</span> products
+<span class="keyword">WHERE</span> vend_id = <span class="number">1003</span>;</span>
+</code></pre><p><br></p>
+<pre><code><span class="code">+-----------+</span>
+<span class="header">| avg_price |
++-----------+</span>
+<span class="header">| 13.212857 |
++-----------+</span>
+1 row in set (0.00 sec)
+</code></pre><p>说明有多个物品具有相同的较低价格，排除它们后提升了平均价格。</p>
+<p>注意， <code>DISTINCT</code> 不能用于 <code>COUNT(*)</code> 。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://airuikun.github.io/2014/05/29/2014-05-05-30-MySQL学习笔记[2013.01.18]/" data-id="cinfqat9y001658mauaifn642" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/18/2014-12-18-sass学习资料/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          sass学习资料
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/07/2014-05-07-mysql表复制/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mysql表复制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端工程/">前端工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/我/">我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phonegap/">Phonegap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node,js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJS/">nodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端工程/">前端工程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术视野/">技术视野</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Phonegap/" style="font-size: 10px;">Phonegap</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mysql/" style="font-size: 12.5px;">mysql</a> <a href="/tags/node-js/" style="font-size: 10px;">node,js</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/react/" style="font-size: 12.5px;">react</a> <a href="/tags/sass/" style="font-size: 12.5px;">sass</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/分享/" style="font-size: 20px;">分享</a> <a href="/tags/前端工程/" style="font-size: 12.5px;">前端工程</a> <a href="/tags/技术视野/" style="font-size: 10px;">技术视野</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/22/2015-12-22-关于p标签的问题/">关于p标签的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-react资料汇总(持续)/">react资料汇总(持续)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-通过NPM快速发布你的NodeJS模块/">通过NPM快速发布你的NodeJS模块（组件包）</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/18/2015-12-18-react初接触/">react初接触</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/2015-12-12-Mongodb For Windows/">Mongodb For Windows</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Iray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

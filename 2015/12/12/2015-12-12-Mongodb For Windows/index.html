@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mongodb For Windows | Iray&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在开源中国看到的，每一篇都是精华">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongodb For Windows">
+<meta property="og:url" content="http://airuikun.github.io/2015/12/12/2015-12-12-Mongodb For Windows/index.html">
+<meta property="og:site_name" content="Iray's blog">
+<meta property="og:description" content="在开源中国看到的，每一篇都是精华">
+<meta property="og:updated_time" content="2016-04-25T08:38:31.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongodb For Windows">
+<meta name="twitter:description" content="在开源中国看到的，每一篇都是精华">
+  
+    <link rel="alternative" href="/atom.xml" title="Iray&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iray&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">艾瑞坤的博客 | WEB前端,一路前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://airuikun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-12-12-Mongodb For Windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/12/2015-12-12-Mongodb For Windows/" class="article-date">
+  <time datetime="2015-12-12T08:30:35.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mongodb For Windows
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装mongodb">安装mongodb</h3><p>1、 <strong>官网下载</strong> <a href="http://www.mongodb.org/downloads" title="mongodb download" target="_blank" rel="external">mongodb</a>，如果嫌慢还可以前往<a href="http://pan.baidu.com/s/1EUCMi" title="mongodb 百度云盘" target="_blank" rel="external">百度云盘</a><br>2、 如果是<strong>安装</strong>包，那么安装方式选 <kbd>Custom</kbd> 这样可以自定义安装，比如将路径设置在 <code>F:\MongoDb\</code> 如果是 <em>压缩包</em> 就不说什么了<br>3、 <strong>创建日志</strong> </p>
+<a id="more"></a>
+<p>4、 <strong>运行命令行</strong> （CMD、Bash） 都行，以Bash为例：</p>
+<pre><code>$ cd /f/MongoDb/bin/
+$ mongod -dbpath <span class="string">"/f/MongoDb/data/db"</span>
+
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">10</span>:<span class="number">31.408</span>+<span class="number">0800</span> [initandlisten] MongoDB starting : pid=<span class="number">5528</span> port=<span class="number">27</span>
+<span class="number">017</span> dbpath=f:/MongoDb/data/db <span class="number">64</span>-bit host=highsea-PC
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">10</span>:<span class="number">31.408</span>+<span class="number">0800</span> [initandlisten] targetMinOS: Windows <span class="number">7</span>/Windows Serv
+er <span class="number">2008</span> R2
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">10</span>:<span class="number">31.408</span>+<span class="number">0800</span> [initandlisten] db version v2<span class="number">.6</span><span class="number">.6</span>
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">10</span>:<span class="number">31.408</span>+<span class="number">0800</span> [initandlisten] git version: <span class="number">608e8</span>bc319627693b04cc7
+da29ecc300a5f45a1f……以下省略
+</code></pre><p>可以看到 mongodb 已经启动，端口号：27017</p>
+<p>5、 <strong>测试连接</strong> 新开一个Bash窗口 </p>
+<pre><code>$ <span class="keyword">cd</span> /f/MongoDb/bin/&amp;&amp;mongo
+MongoDB <span class="keyword">shell</span> <span class="keyword">version</span>: 2.6.6
+connecting to: <span class="keyword">test</span>
+Welcome to the MongoDB <span class="keyword">shell</span>.
+<span class="keyword">For</span> interactive <span class="keyword">help</span>, <span class="keyword">type</span> <span class="string">"help"</span>.
+<span class="keyword">For</span> <span class="keyword">more</span> comprehensive documentation, see
+    http:<span class="comment">//docs.mongodb.org/</span>
+Questions? Try the support <span class="literal">group</span>
+    http:<span class="comment">//groups.google.com/group/mongodb-user</span>
+&gt;_
+</code></pre><p>&amp;&amp;符号是同时执行多个指令；退出测试请输入 <kbd>Ctrl+c</kbd></p>
+<pre><code>&gt; ^C
+<span class="built_in">bye</span>
+</code></pre><p>6、 <strong>创建 Windows 服务</strong> </p>
+<pre><code><span class="comment">$</span> <span class="comment">mongod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dbpath</span> <span class="comment">"/f/MongoDb/data/db"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logpath</span> <span class="comment">"/f/MongoDb/data/log/MongDb</span><span class="string">.</span><span class="comment">log"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">install</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">serviceName</span> <span class="comment">MongoDb</span>
+</code></pre><p>这时候进入log目录发现 MongDb.log 里面写了：</p>
+<pre><code><span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">45</span>:<span class="number">02.232</span>+<span class="number">0800</span> Trying <span class="built_in">to</span> install Windows service <span class="string">'MongoDb'</span>
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">45</span>:<span class="number">03.077</span>+<span class="number">0800</span> Service <span class="string">'MongoDb'</span> (MongoDB) installed <span class="operator">with</span> <span class="command"><span class="keyword">command</span> <span class="title">line</span> <span class="string">'f:\MongoDb\bin\mongod.exe --dbpath f:/MongoDb/data/db --logpath f:/MongoDb/data/log/MongDb.log --service'</span></span>
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T11:<span class="number">45</span>:<span class="number">03.077</span>+<span class="number">0800</span> Service can be started <span class="built_in">from</span> <span class="operator">the</span> <span class="command"><span class="keyword">command</span> <span class="title">line</span> <span class="title">with</span> <span class="string">'net start MongoDb'</span></span>
+</code></pre><p>输入指令：</p>
+<pre><code>$ <span class="winutils">net</span> <span class="built_in">start</span> MongoDb
+MongoDb 服务正在启动 .
+MongoDb 服务已经启动成功。
+</code></pre><p>到此，windows Mongodb 服务启动成功；试试在浏览器中输入 <a href="http://localhost:27017/" title="端口 27017" target="_blank" rel="external">localhost:27017</a> ，会显示什么？</p>
+<p>7、 <strong>关闭服务</strong> 与 <strong>删除服务</strong> ，指令：</p>
+<blockquote>
+<ul>
+<li>关闭服务</li>
+</ul>
+</blockquote>
+<pre><code>$ net stop MongoDB
+发生系统错误 <span class="number">109</span>。
+管道已结束。
+</code></pre><p>此时有提示： <strong>发生系统错误 109</strong> 不要紧，只要进入 <code> \data\db\ </code> 目录删除 mongodb.lok 文件重新启动服务即可（不行？多试几次）。</p>
+<blockquote>
+<ul>
+<li>删除服务</li>
+</ul>
+</blockquote>
+<pre><code>$ mongod --dbpath <span class="string">"/f/MongoDb/data/db"</span> --logpath <span class="string">"/f/MongoDb/data/log/MongDb.log"</span> --remove --serviceName <span class="string">"MongoDB"</span>
+<span class="number">2014</span>-<span class="number">12</span>-<span class="number">31</span>T12:<span class="number">50</span>:<span class="number">44.304</span>+<span class="number">0800</span> <span class="built_in">log</span> file <span class="string">"f:/MongoDb/data/log/MongDb.log"</span> exists; m
+oved to <span class="string">"f:/MongoDb/data/log/MongDb.log.2014-12-31T04-50-44"</span>.
+</code></pre><p>此时进入 <code>MongDb.log</code> 发现文本为：</p>
+<pre><code><span class="number">2014-12-31</span>T<span class="number">12:50:44.31</span>9+0800 Trying to remove Windows service 'MongoDB'
+<span class="number">2014-12-31</span>T<span class="number">12:50:44.31</span>9+0800 Service 'MongoDB' removed
+</code></pre><p>到此，mongodb 服务删除成功。</p>
+<h3 id="mongodb_常用指令">mongodb 常用指令</h3><p>1、 <strong>启动 mongodb</strong> ；方法不再赘述， 以 <code> $ net start MongoDB </code> 为例；</p>
+<pre><code>$ cd /f/MongoDb/bin/&amp;&amp;net <span class="operator"><span class="keyword">start</span> MongoDb&amp;&amp;mongo
+
+MongoDb 服务已经启动成功。
+
+MongoDB shell <span class="keyword">version</span>: <span class="number">2.6</span><span class="number">.6</span>
+connecting <span class="keyword">to</span>: <span class="keyword">test</span>
+&gt; <span class="keyword">show</span> dbs
+<span class="keyword">admin</span>  (<span class="keyword">empty</span>)
+<span class="keyword">local</span>  <span class="number">0.078</span>GB
+&gt;_</span>
+</code></pre><p>2、 <strong>增删改查</strong> ，以及常见指令</p>
+<pre><code>&gt; <span class="keyword">db</span>.highsea.<span class="keyword">save</span>({<span class="string">"_id"</span>:<span class="string">"2"</span>,<span class="string">"nickname"</span>:<span class="string">"high sea"</span>,<span class="string">"job"</span>:<span class="string">"web前端开发工程师"</span>})
+WriteResult({ <span class="string">"nInserted"</span> : 1 })
+&gt;_
+</code></pre><blockquote>
+<p>注 此处如提示</p>
+</blockquote>
+<pre><code> chunk <span class="number">4114</span> failed with errno:<span class="number">1455</span> 页面文件太小，无法完成操作。
+……
+</code></pre><p>则是服务器内存不够用了，建议增加虚拟内存或者物理内存</p>
+<blockquote>
+<p>注 mongodb 中把关系数据库的”表”称作”集合” ……</p>
+</blockquote>
+<p>以上创建了 名为”highsea“的表，（如果已存在 “highsea”的表 mongodb 会合并）并且插入了俩个字段 “nickname” 和 “job” ，主键是 “_id”，继续：</p>
+<pre><code>&gt; db.highsea.<span class="keyword">insert</span>({<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"nickname"</span>:<span class="string">"Gao Hai"</span>,<span class="string">"QQ"</span>:<span class="string">"644494365"</span>})
+WriteResult({ <span class="string">"nInserted"</span> : <span class="number">1</span> })
+&gt; db.highsea.<span class="keyword">insert</span>({<span class="string">"_id"</span>:<span class="string">"3"</span>,<span class="string">"email"</span>:<span class="string">"admin@highsea90.com"</span>})
+WriteResult({ <span class="string">"nInserted"</span> : <span class="number">1</span> })
+&gt; db.highsea.<span class="keyword">insert</span>({<span class="string">"_id"</span>:<span class="string">"3"</span>,<span class="string">"email"</span>:<span class="string">"644494365@qq.com"</span>})
+WriteResult({
+        <span class="string">"nInserted"</span> : <span class="number">0</span>,
+        <span class="string">"writeError"</span> : {
+                <span class="string">"code"</span> : <span class="number">11000</span>,
+                <span class="string">"errmsg"</span> : <span class="string">"insertDocument :: caused by :: 11000 E11000 duplicat
+e key error index: highsea.highsea.$_id_  dup key: { : \"</span><span class="number">3</span>\<span class="string">" }"</span>
+        }
+})
+</code></pre><p>以上，我又插入一条 主键 “_id” 为 “1” 的数据，然后又重复插入了 “_id”为”2” 的数据，mongodb 报错，那换成 <code>save</code> 继续：</p>
+<pre><code>&gt; db.highsea.save({<span class="string">"_id"</span>:<span class="string">"3"</span>,<span class="string">"email"</span>:<span class="string">"644494365@qq.com"</span>})
+WriteResult({ <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">1</span> })
+</code></pre><p>mongodb 提示 Modified 成功。（这也是 save 和 insert 的区别）<br>此时 </p>
+<pre><code>&gt; <span class="keyword">db</span>.highsea.find()
+{ <span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"nickname"</span> : <span class="string">"Gao Hai"</span>, <span class="string">"QQ"</span> : <span class="string">"644494365"</span> }
+{ <span class="string">"_id"</span> : <span class="string">"2"</span>, <span class="string">"nickname"</span> : <span class="string">"high sea"</span>, <span class="string">"job"</span> : <span class="string">"web前端开发工程师"</span> }
+{ <span class="string">"_id"</span> : <span class="string">"3"</span>, <span class="string">"email"</span> : <span class="string">"644494365@qq.com"</span> }
+
+&gt; <span class="keyword">db</span>.highsea.find({<span class="string">"QQ"</span>:<span class="string">"644494365"</span>})
+{ <span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"nickname"</span> : <span class="string">"Gao Hai"</span>, <span class="string">"QQ"</span> : <span class="string">"644494365"</span> }
+
+&gt; show dbs
+admin    (empty)
+highsea  0.078GB
+<span class="keyword">local</span>    0.078GB
+<span class="keyword">test</span>     0.078GB
+
+&gt; <span class="keyword">db</span>.<span class="keyword">version</span>()
+2.6.6
+
+&gt; <span class="keyword">db</span>.getMongo()
+connection to 127.0.0.1
+
+&gt; <span class="keyword">db</span>.addUser(<span class="string">"hs"</span>,<span class="string">"mg123"</span>,<span class="string">"true"</span>)
+WARNING: The 'addUser' <span class="keyword">shell</span> helper is DEPRECATED. Please <span class="keyword">use</span> 'createUser' inste
+ad
+Successfully added user: { <span class="string">"user"</span> : <span class="string">"hs"</span>, <span class="string">"roles"</span> : [ <span class="string">"read"</span> ] }
+
+&gt; show users
+{
+        <span class="string">"_id"</span> : <span class="string">"highsea.hs"</span>,
+        <span class="string">"user"</span> : <span class="string">"hs"</span>,
+        <span class="string">"db"</span> : <span class="string">"highsea"</span>,
+        <span class="string">"roles"</span> : [
+                {
+                        <span class="string">"role"</span> : <span class="string">"read"</span>,
+                        <span class="string">"db"</span> : <span class="string">"highsea"</span>
+                }
+        ]
+}
+
+&gt; show collections
+highsea
+system.indexes
+
+&gt; <span class="keyword">db</span>.createCollection(<span class="string">"wellcome"</span>)
+{ <span class="string">"ok"</span> : 1 }
+
+&gt; <span class="keyword">use</span> highsea
+switched to <span class="keyword">db</span> highsea
+
+&gt; <span class="keyword">db</span>.dropDatabase()
+{ <span class="string">"dropped"</span> : <span class="string">"highsea"</span>, <span class="string">"ok"</span> : 1 }
+
+&gt; show dbs
+admin     0.078GB
+<span class="keyword">local</span>     0.078GB
+<span class="keyword">test</span>      0.078GB
+wellcome  (empty)
+
+&gt;_
+</code></pre><p>这里有个提示： 2.6.6 版本已经不推荐使用 addUser 了，请使用 createUser</p>
+<blockquote>
+<ul>
+<li>注：输入中文时注意光标</li>
+</ul>
+</blockquote>
+<p>以上展示了 指令 ：</p>
+<pre><code>show dbs                    显示所有数据库
+<span class="keyword">db</span>.foo.<span class="keyword">save</span>({})             创建|更新某个数据库
+<span class="keyword">db</span>.foo.insert({})           插入某个数据库
+<span class="keyword">db</span>.foo.find()               显示某个数据库
+<span class="keyword">db</span>.foo.find({<span class="string">"foo"</span>:<span class="string">"foo"</span>})  对于当前数据库中的foo集合进行查找，条件是数据中有一个属性叫foo，且foo的值为foo
+<span class="keyword">db</span>.<span class="keyword">version</span>()                查看当前版本
+<span class="keyword">db</span>.getMongo()               获取链接当前数据库的服务器
+<span class="keyword">db</span>.addUser()                增加数据库用户
+show users                  查看用户
+show collections            显示当前数据库的集合
+<span class="keyword">db</span>.createCollection(<span class="string">"foo"</span>)  创建一个名为<span class="string">"foo"</span>的空数据库
+<span class="keyword">use</span> foo                     切换到某个数据库
+<span class="keyword">db</span>.dropDatabase()           删除当前数据库
+</code></pre><p>其他指令 可以使用 <code> help | db.help() | db.yourColl.help() |  db.youColl.find().help() </code></p>
+<p>附： Mongodb 数据库操作 help 指令 中文版</p>
+<blockquote>
+<ul>
+<li>help</li>
+</ul>
+</blockquote>
+<pre><code>db.help()                    <span class="operator"><span class="keyword">help</span> <span class="keyword">on</span> db methods
+db.mycoll.<span class="keyword">help</span>()             <span class="keyword">help</span> <span class="keyword">on</span> collection methods
+sh.<span class="keyword">help</span>()                    sharding helpers
+rs.<span class="keyword">help</span>()                    replica <span class="keyword">set</span> helpers
+<span class="keyword">help</span> <span class="keyword">admin</span>                   administrative <span class="keyword">help</span>
+<span class="keyword">help</span> <span class="keyword">connect</span>                 connecting <span class="keyword">to</span> a db <span class="keyword">help</span>
+<span class="keyword">help</span> <span class="keyword">keys</span>                    <span class="keyword">key</span> shortcuts
+<span class="keyword">help</span> misc                    misc things <span class="keyword">to</span> know
+<span class="keyword">help</span> mr                      mapreduce
+<span class="keyword">show</span> dbs                     <span class="keyword">show</span> <span class="keyword">database</span> <span class="keyword">names</span>
+<span class="keyword">show</span> collections             <span class="keyword">show</span> collections <span class="keyword">in</span> <span class="keyword">current</span> <span class="keyword">database</span>
+<span class="keyword">show</span> <span class="keyword">users</span>                   <span class="keyword">show</span> <span class="keyword">users</span> <span class="keyword">in</span> <span class="keyword">current</span> <span class="keyword">database</span>
+<span class="keyword">show</span> profile                 <span class="keyword">show</span> most recent <span class="keyword">system</span>.profile entries <span class="keyword">with</span> <span class="keyword">time</span> &gt;= <span class="number">1</span>ms
+<span class="keyword">show</span> <span class="keyword">logs</span>                    <span class="keyword">show</span> the <span class="keyword">accessible</span> logger <span class="keyword">names</span>
+<span class="keyword">show</span> <span class="keyword">log</span> [<span class="keyword">name</span>]              prints <span class="keyword">out</span> the <span class="keyword">last</span> <span class="keyword">segment</span> <span class="keyword">of</span> <span class="keyword">log</span> <span class="keyword">in</span> <span class="keyword">memory</span>, <span class="string">'global'</span> <span class="keyword">is</span> <span class="keyword">default</span>
+<span class="keyword">use</span> &lt;db_name&gt;                <span class="keyword">set</span> <span class="keyword">current</span> <span class="keyword">database</span>
+db.foo.find()                <span class="keyword">list</span> objects <span class="keyword">in</span> collection foo
+db.foo.find( { a : <span class="number">1</span> } )     <span class="keyword">list</span> objects <span class="keyword">in</span> foo <span class="keyword">where</span> a == <span class="number">1</span>
+it                           <span class="keyword">result</span> <span class="keyword">of</span> the <span class="keyword">last</span> line evaluated;</span> <span class="operator"><span class="keyword">use</span> <span class="keyword">to</span> further <span class="keyword">iterate</span>
+DBQuery.shellBatchSize = x   <span class="keyword">set</span> <span class="keyword">default</span> <span class="built_in">number</span> <span class="keyword">of</span> items <span class="keyword">to</span> display <span class="keyword">on</span> shell
+<span class="keyword">exit</span>                         quit the mongo shell</span>
+</code></pre><blockquote>
+<p> db.help();</p>
+</blockquote>
+<pre><code><span class="keyword">DB</span> methods:
+    <span class="keyword">db</span>.adminCommand(nameOrDocument) - switches to 'admin' <span class="keyword">db</span>, and runs command [ just calls <span class="keyword">db</span>.runCommand(...) ]
+    <span class="keyword">db</span>.auth(username, password)
+    <span class="keyword">db</span>.cloneDatabase(fromhost)
+    <span class="keyword">db</span>.commandHelp(name) returns the <span class="keyword">help</span> <span class="keyword">for</span> the command
+    <span class="keyword">db</span>.copyDatabase(fromdb, todb, fromhost)
+    <span class="keyword">db</span>.createCollection(name, { size : ..., capped : ..., max : ... } )
+    <span class="keyword">db</span>.createUser(userDocument)
+    <span class="keyword">db</span>.currentOp() displays currently executing operations <span class="keyword">in</span> the <span class="keyword">db</span>
+    <span class="keyword">db</span>.dropDatabase()
+    <span class="keyword">db</span>.eval(func, <span class="keyword">args</span>) <span class="keyword">run</span> code server-side
+    <span class="keyword">db</span>.fsyncLock() flush data to disk and lock server <span class="keyword">for</span> backups
+    <span class="keyword">db</span>.fsyncUnlock() unlocks server following a <span class="keyword">db</span>.fsyncLock()
+    <span class="keyword">db</span>.getCollection(cname) same <span class="keyword">as</span> <span class="keyword">db</span>['cname'] or <span class="keyword">db</span>.cname
+    <span class="keyword">db</span>.getCollectionNames()
+    <span class="keyword">db</span>.getLastError() - just returns the <span class="keyword">err</span> msg <span class="literal">string</span>
+    <span class="keyword">db</span>.getLastErrorObj() - <span class="keyword">return</span> full status object
+    <span class="keyword">db</span>.getMongo() get the server connection object
+    <span class="keyword">db</span>.getMongo().setSlaveOk() allow queries <span class="keyword">on</span> a replication slave server
+    <span class="keyword">db</span>.getName()
+    <span class="keyword">db</span>.getPrevError()
+    <span class="keyword">db</span>.getProfilingLevel() - deprecated
+    <span class="keyword">db</span>.getProfilingStatus() - returns <span class="keyword">if</span> profiling is <span class="keyword">on</span> and slow threshold
+    <span class="keyword">db</span>.getReplicationInfo()
+    <span class="keyword">db</span>.getSiblingDB(name) get the <span class="keyword">db</span> at the same server <span class="keyword">as</span> this <span class="keyword">one</span>
+    <span class="keyword">db</span>.getWriteConcern() - returns the write concern used <span class="keyword">for</span> any operations <span class="keyword">on</span> this <span class="keyword">db</span>, inherited from server object <span class="keyword">if</span> <span class="keyword">set</span>
+    <span class="keyword">db</span>.hostInfo() get details <span class="keyword">about</span> the server's host
+    <span class="keyword">db</span>.isMaster() check replica primary status
+    <span class="keyword">db</span>.killOp(opid) kills the current operation <span class="keyword">in</span> the <span class="keyword">db</span>
+    <span class="keyword">db</span>.listCommands() lists all the <span class="keyword">db</span> commands
+    <span class="keyword">db</span>.loadServerScripts() loads all the scripts <span class="keyword">in</span> <span class="keyword">db</span>.system.js
+    <span class="keyword">db</span>.logout()
+    <span class="keyword">db</span>.printCollectionStats()
+    <span class="keyword">db</span>.printReplicationInfo()
+    <span class="keyword">db</span>.printShardingStatus()
+    <span class="keyword">db</span>.printSlaveReplicationInfo()
+    <span class="keyword">db</span>.dropUser(username)
+    <span class="keyword">db</span>.repairDatabase()
+    <span class="keyword">db</span>.resetError()
+    <span class="keyword">db</span>.runCommand(cmdObj) <span class="keyword">run</span> a database command.  <span class="keyword">if</span> cmdObj is a string, turns it into { cmdObj : 1 }
+    <span class="keyword">db</span>.serverStatus()
+    <span class="keyword">db</span>.setProfilingLevel(level,&lt;slowms&gt;) 0=off 1=slow 2=all
+    <span class="keyword">db</span>.setWriteConcern( &lt;write concern doc&gt; ) - sets the write concern <span class="keyword">for</span> writes to the <span class="keyword">db</span>
+    <span class="keyword">db</span>.unsetWriteConcern( &lt;write concern doc&gt; ) - unsets the write concern <span class="keyword">for</span> writes to the <span class="keyword">db</span>
+    <span class="keyword">db</span>.setVerboseShell(flag) <span class="keyword">display</span> extra information <span class="keyword">in</span> <span class="keyword">shell</span> output
+    <span class="keyword">db</span>.shutdownServer()
+    <span class="keyword">db</span>.stats()
+    <span class="keyword">db</span>.<span class="keyword">version</span>() current <span class="keyword">version</span> of the server
+</code></pre><blockquote>
+<ul>
+<li>db.yourColl.help();</li>
+</ul>
+</blockquote>
+<pre><code>DBCollection <span class="keyword">help</span>
+    <span class="keyword">db</span>.yourColl.find().<span class="keyword">help</span>() - show DBCursor <span class="keyword">help</span>
+    <span class="keyword">db</span>.yourColl.<span class="keyword">count</span>()
+    <span class="keyword">db</span>.yourColl.copyTo(newColl) - <span class="keyword">duplicates</span> collection <span class="keyword">by</span> copying all documents to newColl; <span class="keyword">no</span> indexes are copied.
+    <span class="keyword">db</span>.yourColl.convertToCapped(maxBytes) - calls {convertToCapped:'yourColl', size:maxBytes}} command
+    <span class="keyword">db</span>.yourColl.dataSize()
+    <span class="keyword">db</span>.yourColl.<span class="keyword">distinct</span>( key ) - <span class="keyword">e</span>.<span class="keyword">g</span>. <span class="keyword">db</span>.yourColl.<span class="keyword">distinct</span>( 'x' )
+    <span class="keyword">db</span>.yourColl.<span class="keyword">drop</span>() <span class="keyword">drop</span> the collection
+    <span class="keyword">db</span>.yourColl.dropIndex(index) - <span class="keyword">e</span>.<span class="keyword">g</span>. <span class="keyword">db</span>.yourColl.dropIndex( <span class="string">"indexName"</span> ) or <span class="keyword">db</span>.yourColl.dropIndex( { <span class="string">"indexKey"</span> : 1 } )
+    <span class="keyword">db</span>.yourColl.dropIndexes()
+    <span class="keyword">db</span>.yourColl.ensureIndex(keypattern[,options]) - options is <span class="keyword">an</span> object with these possible fields: name, unique, dropDups
+    <span class="keyword">db</span>.yourColl.reIndex()
+    <span class="keyword">db</span>.yourColl.find([<span class="keyword">query</span>],[fields]) - <span class="keyword">query</span> is <span class="keyword">an</span> optional <span class="keyword">query</span> filter. fields is optional <span class="keyword">set</span> of fields to <span class="keyword">return</span>. - <span class="keyword">e</span>.<span class="keyword">g</span>. <span class="keyword">db</span>.yourColl.find( {x:77} , {name:1, x:1} )
+    <span class="keyword">db</span>.yourColl.find(...).<span class="keyword">count</span>()
+    <span class="keyword">db</span>.yourColl.find(...).limit(<span class="keyword">n</span>)
+    <span class="keyword">db</span>.yourColl.find(...).skip(<span class="keyword">n</span>)
+    <span class="keyword">db</span>.yourColl.find(...).<span class="keyword">sort</span>(...)
+    <span class="keyword">db</span>.yourColl.findOne([<span class="keyword">query</span>])
+    <span class="keyword">db</span>.yourColl.findAndModify( { <span class="keyword">update</span> : ... , remove : bool [, <span class="keyword">query</span>: {}, <span class="keyword">sort</span>: {}, 'new': false] } )
+    <span class="keyword">db</span>.yourColl.getDB() get <span class="keyword">DB</span> object associated with collection
+    <span class="keyword">db</span>.yourColl.getPlanCache() get <span class="keyword">query</span> plan cache associated with collection
+    <span class="keyword">db</span>.yourColl.getIndexes()
+    <span class="keyword">db</span>.yourColl.<span class="literal">group</span>( { key : ..., initial: ..., reduce : ...[, cond: ...]} )
+    <span class="keyword">db</span>.yourColl.insert(obj)
+    <span class="keyword">db</span>.yourColl.mapReduce( mapFunction , reduceFunction , &lt;optional params&gt;)
+    <span class="keyword">db</span>.yourColl.aggregate( [pipeline], &lt;optional params&gt; ) - performs <span class="keyword">an</span> aggregation <span class="keyword">on</span> a collection; returns a cursor
+    <span class="keyword">db</span>.yourColl.remove(<span class="keyword">query</span>)
+    <span class="keyword">db</span>.yourColl.renameCollection( newName , &lt;dropTarget&gt; ) renames the collection.
+    <span class="keyword">db</span>.yourColl.runCommand( name , &lt;options&gt; ) runs a <span class="keyword">db</span> command with the given name where the first param is the collection name
+    <span class="keyword">db</span>.yourColl.<span class="keyword">save</span>(obj)
+    <span class="keyword">db</span>.yourColl.stats()
+    <span class="keyword">db</span>.yourColl.storageSize() - includes free space allocated to this collection
+    <span class="keyword">db</span>.yourColl.totalIndexSize() - size <span class="keyword">in</span> bytes of all the indexes
+    <span class="keyword">db</span>.yourColl.totalSize() - storage allocated <span class="keyword">for</span> all data and indexes
+    <span class="keyword">db</span>.yourColl.<span class="keyword">update</span>(<span class="keyword">query</span>, object[, upsert_bool, multi_bool]) - instead of <span class="keyword">two</span> flags, you can pass <span class="keyword">an</span> object with fields: upsert, multi
+    <span class="keyword">db</span>.yourColl.validate( &lt;full&gt; ) - SLOW
+    <span class="keyword">db</span>.yourColl.getShardVersion() - only <span class="keyword">for</span> <span class="keyword">use</span> with sharding
+    <span class="keyword">db</span>.yourColl.getShardDistribution() - prints statistics <span class="keyword">about</span> data distribution <span class="keyword">in</span> the <span class="keyword">cluster</span>
+    <span class="keyword">db</span>.yourColl.getSplitKeysForChunks( &lt;maxChunkSize&gt; ) - calculates <span class="keyword">split</span> points over all chunks and returns splitter function
+    <span class="keyword">db</span>.yourColl.getWriteConcern() - returns the write concern used <span class="keyword">for</span> any operations <span class="keyword">on</span> this collection, inherited from server/<span class="keyword">db</span> <span class="keyword">if</span> <span class="keyword">set</span>
+    <span class="keyword">db</span>.yourColl.setWriteConcern( &lt;write concern doc&gt; ) - sets the write concern <span class="keyword">for</span> writes to the collection
+    <span class="keyword">db</span>.yourColl.unsetWriteConcern( &lt;write concern doc&gt; ) - unsets the writeconcern <span class="keyword">for</span> writes to the collection
+</code></pre><blockquote>
+<ul>
+<li>db.youColl.find().help();</li>
+</ul>
+</blockquote>
+<pre><code>find() modifiers
+    .<span class="built_in">sort</span>( {...} )
+    .limit( n )
+    .skip( n )
+    .count(applySkipLimit) - total <span class="comment"># of objects matching query. by default ignores skip,limit</span>
+    .size() - total <span class="comment"># of objects cursor would return, honors skip,limit</span>
+    .explain([verbose])
+    .hint(...)
+    .addOption(n) - adds op_query options <span class="comment">-- see wire protocol</span>
+    .<span class="title">_add</span>Special(name, <span class="built_in">value</span>) - <span class="keyword">http</span>://dochub.mongodb.org/core/advancedqueries<span class="comment">#AdvancedQueries-Metaqueryoperators</span>
+    .batchSize(n) - sets <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> docs <span class="built_in">to</span> <span class="constant">return</span> per getMore
+    .showDiskLoc() - adds <span class="operator">a</span> $diskLoc field <span class="built_in">to</span> <span class="keyword">each</span> returned object
+    .<span class="built_in">min</span>(idxDoc)
+    .<span class="built_in">max</span>(idxDoc)
+    .comment(comment)
+    .snapshot()
+    .readPref(mode, tagset)
+
+Cursor methods
+    .toArray() - iterates through docs <span class="operator">and</span> returns <span class="operator">an</span> array <span class="operator">of</span> <span class="operator">the</span> results
+    .forEach( func )
+    .map( func )
+    .hasNext()
+    .next()
+    .objsLeftInBatch() - returns count <span class="operator">of</span> docs left <span class="operator">in</span> current batch (when exhausted, <span class="operator">a</span> <span class="built_in">new</span> getMore will be issued)
+    .itcount() - iterates through documents <span class="operator">and</span> counts them
+    .pretty() - pretty print <span class="keyword">each</span> document, possibly over multiple <span class="keyword">lines</span>
+</code></pre><h1 id="附：Mongodb_help_指令_中文版">附：Mongodb help 指令 中文版</h1><pre><code>Options:
+
+General options:
+  -<span class="ruby">h [ --help ]               show this usage information
+</span>  -<span class="ruby">-version                   show version information
+</span>  -<span class="ruby">f [ --config ] arg         configuration file specifying additional options
+</span>  -<span class="ruby">v [ --verbose ] [=arg(=v)] be more verbose (<span class="keyword">include</span> multiple times <span class="keyword">for</span> more
+</span>                              verbosity e.g. -vvvvv)
+  -<span class="ruby">-quiet                     quieter output
+</span>  -<span class="ruby">-port arg                  specify port number - <span class="number">27017</span> by default
+</span>  -<span class="ruby">-bind_ip arg               comma separated list of ip addresses to listen on
+</span>                              -<span class="ruby"> all local ips by default
+</span>  -<span class="ruby">-maxConns arg              max number of simultaneous connections - <span class="number">1000000</span>
+</span>                              by default
+  -<span class="ruby">-logpath arg               log file to send write to instead of stdout - has
+</span>                              to be a file, not directory
+  -<span class="ruby">-logappend                 append to logpath instead of over-writing
+</span>  -<span class="ruby">-timeStampFormat arg       <span class="constant">Desired</span> format <span class="keyword">for</span> timestamps <span class="keyword">in</span> log messages.
+</span>                              One of ctime, iso8601-utc or iso8601-local
+  -<span class="ruby">-pidfilepath arg           full path to pidfile (<span class="keyword">if</span> <span class="keyword">not</span> set, no pidfile is
+</span>                              created)
+  -<span class="ruby">-keyFile arg               private key <span class="keyword">for</span> cluster authentication
+</span>  -<span class="ruby">-setParameter arg          <span class="constant">Set</span> a configurable parameter
+</span>  -<span class="ruby">-httpinterface             enable http interface
+</span>  -<span class="ruby">-clusterAuthMode arg       <span class="constant">Authentication</span> mode used <span class="keyword">for</span> cluster
+</span>                              authentication. Alternatives are
+                              (keyFile|sendKeyFile|sendX509|x509)
+  -<span class="ruby">-auth                      run with security
+</span>  -<span class="ruby">-noauth                    run without security
+</span>  -<span class="ruby">-ipv6                      enable <span class="constant">IPv6</span> support (disabled by default)
+</span>  -<span class="ruby">-jsonp                     allow <span class="constant">JSONP</span> access via http (has security
+</span>                              implications)
+  -<span class="ruby">-rest                      turn on simple rest api
+</span>  -<span class="ruby">-slowms arg (=<span class="number">100</span>)         value of slow <span class="keyword">for</span> profile <span class="keyword">and</span> console log
+</span>  -<span class="ruby">-profile arg               <span class="number">0</span>=off <span class="number">1</span>=slow, <span class="number">2</span>=all
+</span>  -<span class="ruby">-cpu                       periodically show cpu <span class="keyword">and</span> iowait utilization
+</span>  -<span class="ruby">-sysinfo                   print some diagnostic system information
+</span>  -<span class="ruby">-dbpath arg                directory <span class="keyword">for</span> datafiles - defaults to \data\db\
+</span>  -<span class="ruby">-directoryperdb            each database will be stored <span class="keyword">in</span> a separate
+</span>                              directory
+  -<span class="ruby">-noIndexBuildRetry         don<span class="string">'t retry any index builds that were
+</span></span>                              interrupted by shutdown
+  -<span class="ruby"><span class="string">-noprealloc                disable data file preallocation - will often hurt
+</span></span>                              performance
+  -<span class="ruby"><span class="string">-nssize arg (=16)          .ns file size (in MB) for new databases
+</span></span>  -<span class="ruby"><span class="string">-quota                     limits each database to a certain number of files
+</span></span>                              (8 default)
+  -<span class="ruby"><span class="string">-quotaFiles arg            number of files allowed per db, implies --quota
+</span></span>  -<span class="ruby"><span class="string">-smallfiles                use a smaller default file size
+</span></span>  -<span class="ruby"><span class="string">-syncdelay arg (=60)       seconds between disk syncs (0=never, but not
+</span></span>                              recommended)
+  -<span class="ruby"><span class="string">-upgrade                   upgrade db if needed
+</span></span>  -<span class="ruby"><span class="string">-repair                    run repair on all dbs
+</span></span>  -<span class="ruby"><span class="string">-repairpath arg            root directory for repair files - defaults to
+</span></span>                              dbpath
+  -<span class="ruby"><span class="string">-noscripting               disable scripting engine
+</span></span>  -<span class="ruby"><span class="string">-notablescan               do not allow table scans
+</span></span>  -<span class="ruby"><span class="string">-journal                   enable journaling
+</span></span>  -<span class="ruby"><span class="string">-nojournal                 disable journaling (journaling is on by default
+</span></span>                              for 64 bit)
+  -<span class="ruby"><span class="string">-journalOptions arg        journal diagnostic options
+</span></span>  -<span class="ruby"><span class="string">-journalCommitInterval arg how often to group/batch commit (ms)
+</span></span>
+Windows Service Control Manager options:
+  -<span class="ruby"><span class="string">-install                install Windows service
+</span></span>  -<span class="ruby"><span class="string">-remove                 remove Windows service
+</span></span>  -<span class="ruby"><span class="string">-reinstall              reinstall Windows service (equivalent to --remove
+</span></span>                           followed by --install)
+  -<span class="ruby"><span class="string">-serviceName arg        Windows service name
+</span></span>  -<span class="ruby"><span class="string">-serviceDisplayName arg Windows service display name
+</span></span>  -<span class="ruby"><span class="string">-serviceDescription arg Windows service description
+</span></span>  -<span class="ruby"><span class="string">-serviceUser arg        account for service execution
+</span></span>  -<span class="ruby"><span class="string">-servicePassword arg    password used to authenticate serviceUser
+</span></span>
+Replication options:
+  -<span class="ruby"><span class="string">-oplogSize arg       size to use (in MB) for replication op log. default is
+</span></span>                        5% of disk space (i.e. large is good)
+
+Master/slave options (old; use replica sets instead):
+  -<span class="ruby"><span class="string">-master              master mode
+</span></span>  -<span class="ruby"><span class="string">-slave               slave mode
+</span></span>  -<span class="ruby"><span class="string">-source arg          when slave: specify master as &lt;server:port&gt;
+</span></span>  -<span class="ruby"><span class="string">-only arg            when slave: specify a single database to replicate
+</span></span>  -<span class="ruby"><span class="string">-slavedelay arg      specify delay (in seconds) to be used when applying
+</span></span>                        master ops to slave
+  -<span class="ruby"><span class="string">-autoresync          automatically resync if slave data is stale
+</span></span>
+Replica set options:
+  -<span class="ruby"><span class="string">-replSet arg           arg is &lt;setname&gt;[/&lt;optionalseedhostlist&gt;]
+</span></span>  -<span class="ruby"><span class="string">-replIndexPrefetch arg specify index prefetching behavior (if secondary)
+</span></span>                          [none|_id_only|all]
+
+Sharding options:
+  -<span class="ruby"><span class="string">-configsvr           declare this is a config db of a cluster; default port
+</span></span>                        27019; default dir /data/configdb
+  -<span class="ruby"><span class="string">-shardsvr            declare this is a shard db of a cluster; default port
+</span></span>                        27018
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://airuikun.github.io/2015/12/12/2015-12-12-Mongodb For Windows/" data-id="cinfqat8u000858mans9kur78" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/18/2015-12-18-react初接触/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          react初接触
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/11/2015-12-11-NodeJS实战：Express+Mongoose+ejs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NodeJS实战：Express+Mongoose+ejs</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端工程/">前端工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/我/">我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phonegap/">Phonegap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node,js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJS/">nodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端工程/">前端工程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术视野/">技术视野</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Phonegap/" style="font-size: 10px;">Phonegap</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mysql/" style="font-size: 12.5px;">mysql</a> <a href="/tags/node-js/" style="font-size: 10px;">node,js</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/react/" style="font-size: 12.5px;">react</a> <a href="/tags/sass/" style="font-size: 12.5px;">sass</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/分享/" style="font-size: 20px;">分享</a> <a href="/tags/前端工程/" style="font-size: 12.5px;">前端工程</a> <a href="/tags/技术视野/" style="font-size: 10px;">技术视野</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/22/2015-12-22-关于p标签的问题/">关于p标签的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-react资料汇总(持续)/">react资料汇总(持续)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-通过NPM快速发布你的NodeJS模块/">通过NPM快速发布你的NodeJS模块（组件包）</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/18/2015-12-18-react初接触/">react初接触</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/2015-12-12-Mongodb For Windows/">Mongodb For Windows</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Iray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

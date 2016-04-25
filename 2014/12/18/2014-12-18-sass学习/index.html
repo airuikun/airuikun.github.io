@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sass学习 | Iray&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sass学习资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sass学习">
+<meta property="og:url" content="http://airuikun.github.io/2014/12/18/2014-12-18-sass学习/index.html">
+<meta property="og:site_name" content="Iray's blog">
+<meta property="og:description" content="sass学习资料">
+<meta property="og:updated_time" content="2016-04-25T08:45:19.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sass学习">
+<meta name="twitter:description" content="sass学习资料">
+  
+    <link rel="alternative" href="/atom.xml" title="Iray&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iray&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">艾瑞坤的博客 | WEB前端,一路前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://airuikun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2014-12-18-sass学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/2014-12-18-sass学习/" class="article-date">
+  <time datetime="2014-12-18T08:32:35.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端工程/">前端工程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sass学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>工作流程</li>
+</ul>
+<ul>
+<li>两种语法<ul>
+<li>以前的.Sass 类 Ruby语法</li>
+<li>现在的.Scss 是CSS3的超集</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sass安装">Sass安装</h2><ul>
+<li><ol>
+<li>安装Ruby，rvm 为Ruby的管理工具</li>
+</ol>
+</li>
+<li><ol>
+<li>安装sass、compass</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gem <span class="keyword">install</span> sass </span><br><span class="line">sudo gem <span class="keyword">install</span> compass</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>查看版本</li>
+</ul>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sass -v</span><br><span class="line"></span><br><span class="line">compass <span class="property">version</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新 </li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gem</span> update sass</span><br></pre></td></tr></table></figure>
+<ul>
+<li>卸载 </li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gem</span> uninstall  sass</span><br></pre></td></tr></table></figure>
+<h2 id="Sass_的编译有多种方法：">Sass 的编译有多种方法：</h2><p>命令编译</p>
+<ul>
+<li>目录下 </li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch demo<span class="class">.scss</span>:demo.css</span><br></pre></td></tr></table></figure>
+<ul>
+<li>单文件编译：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass <span class="tag">&lt;<span class="title">要编译的Sass文件路径</span>&gt;</span>/style.scss:<span class="tag">&lt;<span class="title">要输出CSS文件路径</span>&gt;</span>/style.css</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多文件编译：</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sass sass/<span class="symbol">:css/</span> </span><br><span class="line">表示将项目中“sass”文件夹中所有“.scss”(“.sass”)文件编译成“.css”文件，并且将这些 <span class="constant">CSS</span> 文件都放在项目中“css”文件夹中。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开启“watch”功能，这样只要你的代码进行任保修改，都能自动监测到代码的变化，并且给你直接编译出来：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch <span class="tag">&lt;<span class="title">要编译的Sass文件路径</span>&gt;</span>/style.scss:<span class="tag">&lt;<span class="title">要输出CSS文件路径</span>&gt;</span>/style.css</span><br></pre></td></tr></table></figure>
+<ul>
+<li>watch 举例：</li>
+</ul>
+<p>来看一个简单的示例，假设我本地有一个项目，我要把项目中“bootstrap.scss”编译出“bootstrap.css”文件，并且将编译出来的文件放在“css”文件夹中，我就可以在我的命令终端中执行：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch sass/<span class="keyword">bootstrap</span>.scss:css/<span class="keyword">bootstrap</span>.css</span><br></pre></td></tr></table></figure>
+<p>一旦我的 bootstrap.scss 文件有任何修改，只要我重新保存了修改的文件，命令终端就能监测，并重新编译出文件</p>
+<ul>
+<li><p>GUI工具编译</p>
+<ul>
+<li>Koala (<a href="http://koala-app.com/" target="_blank" rel="external">http://koala-app.com/</a>)</li>
+<li>Compass.app（<a href="http://compass.kkbox.com/）" target="_blank" rel="external">http://compass.kkbox.com/）</a></li>
+<li>Scout（<a href="http://mhs.github.io/scout-app/）" target="_blank" rel="external">http://mhs.github.io/scout-app/）</a></li>
+<li>CodeKit（<a href="https://incident57.com/codekit/index.html）" target="_blank" rel="external">https://incident57.com/codekit/index.html）</a></li>
+<li>Prepros（<a href="https://prepros.io/）" target="_blank" rel="external">https://prepros.io/）</a></li>
+</ul>
+</li>
+<li><p>相比之下，我比较推荐使用以下两个：</p>
+<ul>
+<li>Koala (<a href="http://www.w3cplus.com/preprocessor/sass-gui-tool-koala.html" target="_blank" rel="external">http://www.w3cplus.com/preprocessor/sass-gui-tool-koala.html</a>) </li>
+<li>CodeKit (<a href="http://www.w3cplus.com/preprocessor/sass-gui-tool-codekit.html" target="_blank" rel="external">http://www.w3cplus.com/preprocessor/sass-gui-tool-codekit.html</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="koala使用">koala使用</h2><ul>
+<li>自动化编译Gulp</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Gulp 配置 Sass 编译的示例代码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./scss/*.scss'</span>)</span><br><span class="line">        .pipe(sass())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">'scss/*.scss'</span>, [<span class="string">'sass'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'sass'</span>,<span class="string">'watch'</span>]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建 Sass 文件时，就需要将文件编码设置为“utf-8”，文件不要用中文</li>
+</ul>
+<h2 id="在_Sass_中编译出来的样式风格也可以按不同的样式风格显示。">在 Sass 中编译出来的样式风格也可以按不同的样式风格显示。</h2><ul>
+<li><p>其主要包括以下几种样式风格：</p>
+<ul>
+<li>嵌套输出方式 nested</li>
+<li>展开输出方式 expanded  </li>
+<li>紧凑输出方式 compact </li>
+<li>压缩输出方式 compressed</li>
+</ul>
+</li>
+<li><p>嵌套输出方式 nested</p>
+</li>
+</ul>
+<p>Sass 提供了一种嵌套显示 CSS 文件的方式。例如</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">nav</span> &#123;</span><br><span class="line">  <span class="tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="tag">li</span> &#123; <span class="attribute">display</span>: inline-block; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在编译的时候带上参数<code>--style nested</code>:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch test<span class="class">.scss</span>:test<span class="class">.css</span> --style nested</span><br></pre></td></tr></table></figure>
+<p>编译出来的 CSS 样式风格：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">nav</span> <span class="tag">ul</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span></span>; &#125;</span></span><br><span class="line"><span class="tag">nav</span> <span class="tag">li</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; &#125;</span></span><br><span class="line"><span class="tag">nav</span> <span class="tag">a</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">6px</span> <span class="number">12px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">text-decoration</span>:<span class="value"> none</span></span>; &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在编译的时候带上参数<code>--style expanded</code>:</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch test<span class="class">.scss</span>:test<span class="class">.css</span> --style expanded</span><br></pre></td></tr></table></figure>
+<p>这个输出的 CSS 样式风格和 nested 类似，只是大括号在另起一行，同样上面的代码，编译出来</p>
+<ul>
+<li>紧凑输出方式 compact,单行<br>在编译的时候带上参数<code>--style compact</code>:</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch test<span class="class">.scss</span>:test<span class="class">.css</span> --style compact</span><br></pre></td></tr></table></figure>
+<ul>
+<li>压缩输出方式 compressed<br>在编译的时候带上参数<code>--style compressed</code>:</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch test<span class="class">.scss</span>:test<span class="class">.css</span> --style compressed</span><br></pre></td></tr></table></figure>
+<p>压缩输出方式会去掉标准的 Sass 和 CSS 注释及空格。也就是压缩好的 CSS 代码样式风格：</p>
+<ul>
+<li>Sass 调试一直以来都是一件头痛的事情，使用 Sass 的同学都希望能在浏览器中直接调试 Sass 文件，能找到对应的行数。值得庆幸的是，现在实现并不是一件难事，只要你的浏览器支持<code>sourcemap</code>功能即可。早一点的版本，需要在编译的时候添加<code>--sourcemap</code> 参数：</li>
+</ul>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">sass</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">watch</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">scss</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">sourcemap</span> <span class="comment">style</span><span class="string">.</span><span class="comment">scss:style</span><span class="string">.</span><span class="comment">css</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Sass3.3 版本之上（我测试使用的版本是 3.4.7），不需要添加这个参数也可以：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --watch style<span class="class">.scss</span>:style.css</span><br></pre></td></tr></table></figure>
+<p>在命令终端，你将看到一个信息：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Change detected to: style<span class="class">.scss</span></span><br><span class="line">  write style<span class="class">.css</span></span><br><span class="line">  write style<span class="class">.css</span><span class="class">.map</span></span><br></pre></td></tr></table></figure>
+<p>这时你就可以像前面展示的 gif 图一样，调试你的 Sass 代码。</p>
+<h2 id="Sass_的变量包括三个部分：">Sass 的变量包括三个部分：</h2><ul>
+<li>声明变量的符号“$”</li>
+<li>变量名称</li>
+<li>赋予变量的值</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="default"><span class="keyword">default</span>则表示默认值。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$color</span>: orange !<span class="keyword">default</span>;//定义全局变量(在选择器、函数、混合宏...的外面定义的变量为全局变量)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>您在学习 sass 时，除了在我们网页上可以做练习，还有一个便利在线编辑器网址如下：</li>
+</ul>
+<p><a href="http://sassmeister.com/" target="_blank" rel="external">http://sassmeister.com/</a></p>
+<ul>
+<li>局部变量只会在局部范围内覆盖全局变量。</li>
+</ul>
+<h2 id="Sass_的嵌套分为三种：">Sass 的嵌套分为三种：</h2><ul>
+<li>选择器嵌套</li>
+<li>属性嵌套</li>
+<li>伪类嵌套</li>
+</ul>
+<h3 id="选择器嵌套">选择器嵌套</h3><p>假设我们有一段这样的结构：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">nav</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">“##”</span>&gt;</span>Home<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">“##”</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">“##”</span>&gt;</span>Blog<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>想选中 header 中的 a 标签，在写 CSS 会这样写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">nav</span> <span class="tag">a</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">header</span> <span class="tag">nav</span> <span class="tag">a</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>那么在 Sass 中，就可以使用选择器的嵌套来实现：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">nav</span> &#123;</span><br><span class="line">  <span class="tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"></span><br><span class="line">    <span class="tag">header</span> <span class="keyword">&amp;</span> &#123;</span><br><span class="line">      <span class="attribute">color</span>:green;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://airuikun.github.io/2014/12/18/2014-12-18-sass学习/" data-id="cinfqat9t001158maseg543qf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/21/2014-12-21使用sublime来写markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用sublime来写markdown
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/18/2014-12-18-sass学习资料/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sass学习资料</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端工程/">前端工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/我/">我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phonegap/">Phonegap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node,js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJS/">nodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端工程/">前端工程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术视野/">技术视野</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Phonegap/" style="font-size: 10px;">Phonegap</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mysql/" style="font-size: 12.5px;">mysql</a> <a href="/tags/node-js/" style="font-size: 10px;">node,js</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/react/" style="font-size: 12.5px;">react</a> <a href="/tags/sass/" style="font-size: 12.5px;">sass</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/分享/" style="font-size: 20px;">分享</a> <a href="/tags/前端工程/" style="font-size: 12.5px;">前端工程</a> <a href="/tags/技术视野/" style="font-size: 10px;">技术视野</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/22/2015-12-22-关于p标签的问题/">关于p标签的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-react资料汇总(持续)/">react资料汇总(持续)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-通过NPM快速发布你的NodeJS模块/">通过NPM快速发布你的NodeJS模块（组件包）</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/18/2015-12-18-react初接触/">react初接触</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/2015-12-12-Mongodb For Windows/">Mongodb For Windows</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Iray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

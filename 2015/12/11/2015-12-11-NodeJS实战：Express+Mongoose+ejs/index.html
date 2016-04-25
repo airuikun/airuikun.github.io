@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>NodeJS实战：Express+Mongoose+ejs | Iray&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="文章目录：1、组件版本号– –node– –express– –Mongoose2、初始化项目 firstblood– –用 express 自动初始化（推荐）– –附：手动初始化 package.json3、关于 express 的 app.js4、前端模板 Handlebars Ejs Jade– –以 Ejs 模板为例– –体验一把： route 路由是如何工作的5、CSS、JS框架支持–">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS实战：Express+Mongoose+ejs">
+<meta property="og:url" content="http://airuikun.github.io/2015/12/11/2015-12-11-NodeJS实战：Express+Mongoose+ejs/index.html">
+<meta property="og:site_name" content="Iray's blog">
+<meta property="og:description" content="文章目录：1、组件版本号– –node– –express– –Mongoose2、初始化项目 firstblood– –用 express 自动初始化（推荐）– –附：手动初始化 package.json3、关于 express 的 app.js4、前端模板 Handlebars Ejs Jade– –以 Ejs 模板为例– –体验一把： route 路由是如何工作的5、CSS、JS框架支持–">
+<meta property="og:image" content="http://images.cnitblog.com/blog/531703/201503/021440193167321.gif">
+<meta property="og:image" content="http://images.cnitblog.com/blog/531703/201503/021437450824907.gif">
+<meta property="og:updated_time" content="2016-04-25T08:39:05.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJS实战：Express+Mongoose+ejs">
+<meta name="twitter:description" content="文章目录：1、组件版本号– –node– –express– –Mongoose2、初始化项目 firstblood– –用 express 自动初始化（推荐）– –附：手动初始化 package.json3、关于 express 的 app.js4、前端模板 Handlebars Ejs Jade– –以 Ejs 模板为例– –体验一把： route 路由是如何工作的5、CSS、JS框架支持–">
+  
+    <link rel="alternative" href="/atom.xml" title="Iray&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Iray&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">艾瑞坤的博客 | WEB前端,一路前行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://airuikun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-12-11-NodeJS实战：Express+Mongoose+ejs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/11/2015-12-11-NodeJS实战：Express+Mongoose+ejs/" class="article-date">
+  <time datetime="2015-12-11T08:15:06.000Z" itemprop="datePublished">2015-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NodeJS实战：Express+Mongoose+ejs
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章目录：<br>1、组件版本号<br>– –node<br>– –express<br>– –Mongoose<br>2、初始化项目 firstblood<br>– –用 express 自动初始化（推荐）<br>– –附：手动初始化 package.json<br>3、关于 express 的 app.js<br>4、前端模板 Handlebars Ejs Jade<br>– –以 Ejs 模板为例<br>– –体验一把： route 路由是如何工作的<br>5、CSS、JS框架支持<br>– –bootstrap2.3.2 + jquery 1.11.1 为例<br>– –头部尾部重用<br>6、增删改查少不了<br>– –mongodb 小回顾<br>– –node 操作 Mongoose 【挑战：一个后台登陆验证+展示mongodb中现有会员信息的小案例】<br>– –增强案例：支持登陆并新增修改会员信息的系统，还得支持 session ~</p>
+<a id="more"></a>
+<h4 id="1、组件版本号：">1、组件版本号：</h4><h5 id="1-1、node：_资料大全">1.1、node： <a href="http://www.cnblogs.com/highsea90/p/4287585.html" title="NodeJS资料大全" target="_blank" rel="external">资料大全</a></h5><pre><code>$ node -v
+v0<span class="number">.10</span><span class="number">.35</span>
+</code></pre><h5 id="1-2、express：_3x_api">1.2、express： <a href="http://expressjs.com/3x/api.html" title="3x api" target="_blank" rel="external">3x api</a></h5><pre><code>$ express -V
+<span class="number">3.0</span><span class="number">.0</span>
+</code></pre><h5 id="1-3、Mongoose_:_3-8-24_api">1.3、Mongoose : <a href="http://mongoosejs.com/docs/api.html" title="mongoose 3.8.24 api" target="_blank" rel="external">3.8.24 api</a></h5><pre><code>$ npm info mongoose version
+<span class="number">3.8</span><span class="number">.24</span>
+
+<span class="comment">//$ npm install mongoose</span>
+<span class="comment">//注：在Windows下安装 **报错（兼容性错误）** 没事的！</span>
+<span class="comment">//向坚持在 windows 平台的同学致敬……（唉，我的 mac 本本也只是看看电影，没事！）</span>
+mongoose@<span class="number">3.8</span><span class="number">.24</span> node_modules\mongoose
+├── regexp-clone@<span class="number">0.0</span><span class="number">.1</span>
+├── sliced@<span class="number">0.0</span><span class="number">.5</span>
+├── muri@<span class="number">0.3</span><span class="number">.1</span>
+├── hooks@<span class="number">0.2</span><span class="number">.1</span>
+├── mpath@<span class="number">0.1</span><span class="number">.1</span>
+├── mpromise@<span class="number">0.4</span><span class="number">.3</span>
+├── ms@<span class="number">0.1</span><span class="number">.0</span>
+├── mquery@<span class="number">0.8</span><span class="number">.0</span> (debug@<span class="number">0.7</span><span class="number">.4</span>)
+└── mongodb@<span class="number">1.4</span><span class="number">.31</span> (readable-stream@<span class="number">1.0</span><span class="number">.33</span>, kerberos@<span class="number">0.0</span><span class="number">.9</span>, <span class="number">9</span>, bson@<span class="number">0.2</span><span class="number">.19</span>)
+</code></pre><p>再次重申： 在 <strong>Windows</strong> 下安装Mongoose <strong>报错（兼容性错误）</strong> 没事的！ <strong>没事的！！！</strong></p>
+<h4 id="2、初始化项目_firstblood">2、初始化项目 firstblood</h4><h5 id="2-1、用_express_自动初始化（推荐）">2.1、用 express 自动初始化（推荐）</h5><p>1、先全局安装 express：(来自于淘宝国内镜像)</p>
+<p>以 3.2.2 为例：</p>
+<pre><code>$ npm install -g express@<span class="number">3.2</span><span class="number">.2</span> --registry=https:<span class="comment">//registry.npm.taobao.org</span>
+</code></pre><p>tips:<br>关于 4.0 呢，中间件全被独立出来，网上 download 下来的代码大都是3.x，可能会出错……<br>建议用3.x。教程也多，一搜一大堆容易解决不常见的坑。</p>
+<p>2、创建项目：</p>
+<p>快速熟悉下 express 的指令：</p>
+<pre><code><span class="attribute">Usage</span>: <span class="string">express [options]</span>
+
+<span class="haml">Options:
+
+  -<span class="ruby">h, --help          输出帮助信息
+</span>  -<span class="ruby"><span class="constant">V</span>, --version       输出版本号
+</span>  -<span class="ruby">e, --ejs           添加 ejs 模板引擎支持 (默认为jade)
+</span>  -<span class="ruby"><span class="constant">H</span>, --hogan         添加 hogan.js模板引擎支持
+</span>  -<span class="ruby">c, --css   样式 &lt;引擎&gt; 支持 (less|stylus) (默认为css)
+</span>  -<span class="ruby">f, --force         强制在非空目录执行</span></span>
+</code></pre><p>开始安装：</p>
+<pre><code><span class="comment">//-e 即支持 ejs； 你喜欢 **ejs** 还是 **jade** ？</span>
+$ express firstblood -e
+
+     express firstblood -e
+
+      create : firstblood
+      create : firstblood/package.json
+      create : firstblood/app.js
+      create : firstblood/<span class="keyword">public</span>
+      create : firstblood/routes
+      create : firstblood/routes/index.js
+      create : firstblood/routes/user.js
+      create : firstblood/views
+      create : firstblood/views/index.ejs
+      create : firstblood/<span class="keyword">public</span>/javascripts
+      create : firstblood/<span class="keyword">public</span>/images
+      create : firstblood/<span class="keyword">public</span>/stylesheets
+      create : firstblood/<span class="keyword">public</span>/stylesheets/style.css
+
+      install dependencies:
+        $ cd firstblood &amp;&amp; npm install
+
+      run the app:
+        $ node app
+
+<span class="comment">//安装组件</span>
+$ cd firstblood &amp;&amp; npm install
+
+    ejs@<span class="number">2.3</span><span class="number">.1</span> node_modules\ejs
+
+    express@<span class="number">3.2</span><span class="number">.2</span> node_modules\express
+    ├── methods@<span class="number">0.0</span><span class="number">.1</span>
+    ├── fresh@<span class="number">0.1</span><span class="number">.0</span>
+    ├── cookie-signature@<span class="number">1.0</span><span class="number">.1</span>
+    ├── range-parser@<span class="number">0.0</span><span class="number">.4</span>
+    ├── qs@<span class="number">0.6</span><span class="number">.3</span>
+    ├── buffer-crc32@<span class="number">0.2</span><span class="number">.1</span>
+    ├── cookie@<span class="number">0.0</span><span class="number">.5</span>
+    ├── commander@<span class="number">0.6</span><span class="number">.1</span>
+    ├── mkdirp@<span class="number">0.3</span><span class="number">.4</span>
+    ├── debug@<span class="number">2.1</span><span class="number">.1</span> (ms@<span class="number">0.6</span><span class="number">.2</span>)
+    ├── send@<span class="number">0.1</span><span class="number">.0</span> (mime@<span class="number">1.2</span><span class="number">.6</span>)
+    └── connect@<span class="number">2.7</span><span class="number">.8</span> (pause@<span class="number">0.0</span><span class="number">.1</span>, bytes@<span class="number">0.2</span><span class="number">.0</span>, formidable@<span class="number">1.0</span><span class="number">.1</span>
+</code></pre><p>这时候 可以启动 <code>node app.js</code> 项目，可以浏览 <code><a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a></code><br>按 <kbd>Ctrl + c</kbd>结束；</p>
+<p>tips：<br><strong>每次代码改动都需要重启 node！</strong>  不过安装 <code>npm install supervisor</code> 后可以偷懒；它会在你每次修改完代码后自动重启。 <strong>神器哦！</strong></p>
+<p>3、安装 mongoose</p>
+<p> package.json 文件自动更新 dependencies 字段：</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> mongoose <span class="comment">--save</span></span>
+</code></pre><h5 id="2-2、附：手动初始化_package-json">2.2、附：手动初始化 package.json</h5><pre><code><span class="variable">$ </span>mkdir firstblood &amp;&amp; cd firstblood
+<span class="variable">$ </span>npm init
+</code></pre><p>依次填写： name、version、description、entry point（入口index.js或app.js）、test command（启动指令 node index.js）、git repository（git库）、keywords、author、license（ISC）…… 大胆随便填写，最后 输入 <code>yes</code> 生成 package.json 文件。</p>
+<p>接下来安装 mongoose，express，修改 package.json </p>
+<pre><code><span class="string">"dependencies"</span>: {
+    <span class="string">"mongoose"</span>: <span class="string">"^3.8.24"</span>,
+    <span class="string">"express"</span>: <span class="string">"3.x"</span>
+},
+</code></pre><p>然后在 当前目录下执行 <code>npm install</code> 安装组件</p>
+<h4 id="3、关于_express的_app-js">3、关于 express的 app.js</h4><p>小解释：</p>
+<pre><code><span class="comment">/**
+ * Module dependencies. 依赖的模块（处理路由，业务逻辑）
+ */</span>
+<span class="keyword">var</span> express = require(<span class="string">'express'</span>)
+  , routes = require(<span class="string">'./routes'</span>)
+  , user = require(<span class="string">'./routes/user'</span>)
+  , http = require(<span class="string">'http'</span>)
+  , path = require(<span class="string">'path'</span>);
+
+<span class="comment">//实例化 express 并赋值app变量</span>
+<span class="keyword">var</span> app = express();
+
+<span class="comment">// all environments 依赖的环境（配置参数）</span>
+app.<span class="keyword">set</span>(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);
+app.<span class="keyword">set</span>(<span class="string">'views'</span>, __dirname + <span class="string">'/views'</span>);
+app.<span class="keyword">set</span>(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>);
+app.<span class="keyword">use</span>(express.favicon());
+app.<span class="keyword">use</span>(express.logger(<span class="string">'dev'</span>));
+
+<span class="comment">//bodyParser 改成 urlencoded 可以忽略一些 Node窗口里的警告</span>
+  app.<span class="keyword">use</span>(express.urlencoded());
+<span class="comment">//app.use(express.bodyParser());</span>
+
+app.<span class="keyword">use</span>(express.methodOverride());
+app.<span class="keyword">use</span>(app.router);
+app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(path.join(__dirname, <span class="string">'public'</span>)));
+
+<span class="comment">// development only 开发模式（检查错误）</span>
+<span class="keyword">if</span> (<span class="string">'development'</span> == app.<span class="keyword">get</span>(<span class="string">'env'</span>)) {
+  app.<span class="keyword">use</span>(express.errorHandler());
+}
+
+<span class="comment">// 路由解析</span>
+app.<span class="keyword">get</span>(<span class="string">'/'</span>, routes.index);
+app.<span class="keyword">get</span>(<span class="string">'/users'</span>, user.list);
+
+<span class="comment">// 创建一个http server 启动端口 </span>
+http.createServer(app).listen(app.<span class="keyword">get</span>(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+  console.log(<span class="string">'Express server listening on port '</span> + app.<span class="keyword">get</span>(<span class="string">'port'</span>));
+}); 
+</code></pre><h4 id="4、前端模板_Handlebars_Ejs_Jade">4、前端模板 Handlebars Ejs Jade</h4><p>关于这个话题移步：<br><a href="https://cnodejs.org/topic/50e70edfa7e6c6171a1d70fa" title=" Jade、EJS、Handlebars 万行代码解释效率比较" target="_blank" rel="external">Jade、EJS、Handlebars 万行代码解释效率比较</a><br><a href="https://cnodejs.org/topic/516f95526d38277306ae154d" title="Jade和ejs，哪一个更胜一筹" target="_blank" rel="external">Jade和ejs，哪一个更胜一筹</a><br><a href="http://ejohn.org/blog/javascript-micro-templating/" title="John大神写的20行模板" target="_blank" rel="external">John大神写的20行模板</a></p>
+<p>楼主总结： 项目个人秀当然是 jade、商业化的肯定是 Ejs、Handlebars； 楼主喜欢后者……</p>
+<h5 id="4-1、以_Ejs_模板为例">4.1、以 Ejs 模板为例</h5><p>让ejs模板文件 支持 html 格式：<br>a：修改app.js</p>
+<pre><code>//让Ejs支持 html
+app.engine(<span class="string">'.html'</span>, ejs.__express);
+app.<span class="keyword">set</span>(<span class="string">'view engine'</span>, <span class="string">'html'</span>);
+//app.<span class="keyword">set</span>(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>);
+</code></pre><p>b：引入 ejs 模块</p>
+<pre><code><span class="comment">//手动添加 ejs 以便支持 .html</span>
+ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>);
+</code></pre><p>c：修改 /views 目录下的入口文件后缀为 index.html<br>重启app即可</p>
+<h5 id="4-2、体验一把：_route_路由是如何工作的">4.2、体验一把： route 路由是如何工作的</h5><p>1、在app.js文件中 找到 路由解析部分；添加</p>
+<pre><code>app.<span class="keyword">get</span>(<span class="string">'/lu-you-qing-qiu'</span>, routes.luyou);
+</code></pre><p>它负责处理你的请求 “/lu-you-qing-qiu”</p>
+<p>2、找到： <code>/routes/index.js</code> 文件；添加</p>
+<pre><code>exports.luyou = <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{
+  res.render(<span class="string">'lu-you-ye-mian'</span>, { title: <span class="string">'“路由”是长这样的！'</span> });
+};
+</code></pre><p>找一个名为 “lu-you-ye-mian.html” （注：上面已经把ejs改成html了哦）去渲染</p>
+<p>关于模块化写法，请移步这里： <a href="http://www.cnblogs.com/highsea90/p/4286527.html" title="NodeJS 菜鸟入门" target="_blank" rel="external">NodeJS 菜鸟入门</a></p>
+<p>3、渲染页面；在 <code>/views/</code> 目录增加 lu-you-ye-mian.html ：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;<span class="title">%=</span> <span class="attribute">title</span> %&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">href</span>=<span class="value">'/stylesheets/style.css'</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h1</span>&gt;</span><span class="tag">&lt;<span class="title">%=</span> <span class="attribute">title</span> %&gt;</span><span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>愉快的启动app.js吧！</p>
+<h4 id="5、CSS、JS框架支持">5、CSS、JS框架支持</h4><h5 id="5-1、以_bootstrap2-3-2_+_jquery_1-11-1_为例：">5.1、以 <a href="http://getbootstrap.com/2.3.2/assets/bootstrap.zip" title="bootstrap 2.3.2" target="_blank" rel="external">bootstrap2.3.2</a> + <a href="http://code.jquery.com/jquery-1.11.1.min.js" title="jquery 1.11.1" target="_blank" rel="external">jquery 1.11.1</a> 为例：</h5><p>1、将 bootstrap 文件夹中的 /css/目录下的所有文件 复制到 /public/stylesheets/<br>2、将 /js/目录下的所有文件加上再下载一个 jquery 复制到 /public/javascripts/<br>3、将 /img/ 目录下所有文件复制到 /public/images/</p>
+<h5 id="5-2、头部尾部重用">5.2、头部尾部重用</h5><p>新建 header.html ：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;<span class="title">%=</span> <span class="attribute">title</span> %&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="comment">&lt;!-- Bootstrap --&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"/stylesheets/bootstrap.min.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">media</span>=<span class="value">"screen"</span>&gt;</span>
+<span class="comment">&lt;!-- &lt;link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"&gt; --&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span> <span class="attribute">screen_capture_injected</span>=<span class="value">"true"</span>&gt;</span>
+</code></pre><p>新建 footer.html ：</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/javascripts/jquery-1.11.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/javascripts/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>那么 index.html 可以改成这样：</p>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">include</span> header.html </span>%&gt;<span class="xml">
+
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span></span>&lt;%=<span class="ruby"> title </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Welcome to </span>&lt;%=<span class="ruby"> title </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+
+</span>&lt;%<span class="ruby"> <span class="keyword">include</span> footer.html </span>%&gt;<span class="xml"></span>
+</code></pre><h4 id="6、增删改查少不了">6、增删改查少不了</h4><p>mongodb 安装、启动、常见指令……移步这里 <a href="http://www.cnblogs.com/highsea90/p/4195927.html" title="Mongodb For Windows" target="_blank" rel="external">Mongodb For Windows</a></p>
+<h5 id="6-1、mongodb_小回顾">6.1、mongodb 小回顾</h5><p>接下来为 firstblood 项目创建一点数据 (mongodb 版本号：2.6.6)</p>
+<pre><code>&gt; use firstblood
+switched <span class="keyword">to</span> db firstblood
+&gt; var listArr = [];<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++){listArr.push({<span class="string">"user"</span>:<span class="string">"test"</span>+i,<span class="string">"password"</span>:<span class="string">"sa
+"</span>+i,<span class="string">"age"</span>:i})}
+<span class="number">5</span>
+&gt; db.admins.<span class="keyword">insert</span>(listArr)
+BulkWriteResult({
+        <span class="string">"writeErrors"</span> : [ ],
+        <span class="string">"writeConcernErrors"</span> : [ ],
+        <span class="string">"nInserted"</span> : <span class="number">5</span>,
+        <span class="string">"nUpserted"</span> : <span class="number">0</span>,
+        <span class="string">"nMatched"</span> : <span class="number">0</span>,
+        <span class="string">"nModified"</span> : <span class="number">0</span>,
+        <span class="string">"nRemoved"</span> : <span class="number">0</span>,
+        <span class="string">"upserted"</span> : [ ]
+})
+&gt; db.admins.find()
+{ <span class="string">"_id"</span> : ObjectId(<span class="string">"54f3f267c0d71446ee04a7f6"</span>), <span class="string">"user"</span> : <span class="string">"test0"</span>, <span class="string">"password"</span> : <span class="string">"
+sa0"</span>, <span class="string">"age"</span> : <span class="number">0</span> }
+{ <span class="string">"_id"</span> : ObjectId(<span class="string">"54f3f267c0d71446ee04a7f7"</span>), <span class="string">"user"</span> : <span class="string">"test1"</span>, <span class="string">"password"</span> : <span class="string">"
+sa1"</span>, <span class="string">"age"</span> : <span class="number">1</span> }
+{ <span class="string">"_id"</span> : ObjectId(<span class="string">"54f3f267c0d71446ee04a7f8"</span>), <span class="string">"user"</span> : <span class="string">"test2"</span>, <span class="string">"password"</span> : <span class="string">"
+sa2"</span>, <span class="string">"age"</span> : <span class="number">2</span> }
+{ <span class="string">"_id"</span> : ObjectId(<span class="string">"54f3f267c0d71446ee04a7f9"</span>), <span class="string">"user"</span> : <span class="string">"test3"</span>, <span class="string">"password"</span> : <span class="string">"
+sa3"</span>, <span class="string">"age"</span> : <span class="number">3</span> }
+{ <span class="string">"_id"</span> : ObjectId(<span class="string">"54f3f267c0d71446ee04a7fa"</span>), <span class="string">"user"</span> : <span class="string">"test4"</span>, <span class="string">"password"</span> : <span class="string">"
+sa4"</span>, <span class="string">"age"</span> : <span class="number">4</span> }
+&gt;<span class="number">_</span>
+</code></pre><p>OK 成功了，暂且多多回顾下其他指令吧</p>
+<h5 id="6-2、node_操作_Mongoose_【挑战：一个后台登陆验证+展示mongodb中现有会员信息的小案例】">6.2、node 操作 Mongoose 【挑战：一个后台登陆验证+展示mongodb中现有会员信息的小案例】</h5><p>1、新建目录： <code>mkdir db</code>；添加数据集合的结构 firstblood_schema.js </p>
+<pre><code><span class="comment">// 链接 firstblood 集合</span>
+<span class="keyword">var</span> mongoose = require('mongoose');
+<span class="keyword">var</span> <span class="keyword">db</span> = mongoose.createConnection('mongodb:<span class="comment">//127.0.0.1:27017/firstblood');</span>
+<span class="comment">// 链接错误</span>
+<span class="keyword">db</span>.<span class="keyword">on</span>('<span class="keyword">error</span>', function(<span class="keyword">error</span>) {
+    console.<span class="literal">log</span>(<span class="keyword">error</span>);
+});
+<span class="comment">// Schema 结构</span>
+<span class="keyword">var</span> Schema = mongoose.Schema;
+<span class="keyword">var</span> userlistScheMa = new Schema({
+    user     : {<span class="keyword">type</span> : String},
+    password : {<span class="keyword">type</span> : String},
+    <span class="comment">//content  : {type : String},</span>
+    <span class="comment">//time     : {type : Date, default: Date.now},</span>
+    age      : {<span class="keyword">type</span> : Number}
+});
+
+<span class="comment">// 关联 firstblood -&gt; admins 表</span>
+exports.userlist = <span class="keyword">db</span>.model('admins', userlistScheMa);
+exports.<span class="keyword">db</span> = <span class="keyword">db</span>;
+</code></pre><blockquote>
+<p>关于 Schema 、Model 、Entity 以及 Mongoose 其他APi参考，可以移步这里：</p>
+</blockquote>
+<p><a href="https://cnodejs.org/topic/504b4924e2b84515770103dd" title="Mongoose学习参考文档" target="_blank" rel="external">Mongoose学习参考文档</a></p>
+<p>2、在 /routes/ 目录，修改 index.js （当然也可以新建一个文件）</p>
+<pre><code><span class="comment">/*
+ * GET home page.
+ */</span>
+<span class="keyword">var</span> firstblood = <span class="built_in">require</span>(<span class="string">'./../db/firstblood_schema.js'</span>);
+<span class="comment">/**/</span>
+exports.index = <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>)</span>{
+    res.render(<span class="string">'index'</span>, {
+        title: <span class="string">'Express'</span>,
+    });
+}
+exports.luyou = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>{
+    res.render(<span class="string">'lu-you-ye-mian'</span>, { title: <span class="string">'“路由”是长这样的！'</span> });
+}
+exports.login = <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>)</span>{
+    res.render(<span class="string">'login'</span>, {
+        title: <span class="string">'login'</span>
+    });
+}
+<span class="comment">/* home */</span>
+exports.home = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>{
+    <span class="keyword">var</span> query = {user: req.body.user, password: req.body.password};
+    firstblood.userlist.count(query, <span class="function"><span class="keyword">function</span>(<span class="params">err, doc</span>)</span>{ 
+        <span class="keyword">if</span> (doc==<span class="number">1</span>) {
+            <span class="keyword">var</span> findResult = firstblood.userlist.find(<span class="function"><span class="keyword">function</span>(<span class="params">error, result</span>)</span>{
+                <span class="keyword">if</span> (error) {
+                    res.send(error);
+                }<span class="keyword">else</span>{
+                    res.render(<span class="string">'home'</span>, {
+                        title : <span class="string">'后台'</span>,
+                        status: doc,
+                        username : query.user,
+                        adminlist : result,
+                        date : <span class="keyword">new</span> <span class="built_in">Date</span>()
+                    });
+
+                }
+            });
+        }<span class="keyword">else</span>{
+            res.render(<span class="string">'home'</span>, {
+                title : <span class="string">'后台'</span>,
+                status: doc,
+            });
+            <span class="comment">//res.redirect('/');</span>
+        }
+    });
+}
+</code></pre><p>4、在 app.js 中添加模块依赖（如果新建路由模块的话）和路由：</p>
+<pre><code><span class="comment">// 路由解析</span>
+<span class="comment">// firstblood 项目路由</span>
+<span class="keyword">app</span>.<span class="literal">get</span>('/login',routes.login);<span class="comment">//增加</span>
+<span class="keyword">app</span>.<span class="keyword">post</span>('/home',routes.home);<span class="comment">//提交</span>
+</code></pre><p>5、在 /views/ 目录，添加 login.html</p>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">include</span> header.html </span>%&gt;<span class="xml">
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container-fluid"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row-fluid"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"span12"</span> <span class="attribute">action</span>=<span class="value">"home"</span> <span class="attribute">method</span>=<span class="value">"post"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">fieldset</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">legend</span>&gt;</span>请输入<span class="tag">&lt;/<span class="title">legend</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">span</span>&gt;</span>用户名:<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">br</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"user"</span> <span class="attribute">name</span>=<span class="value">"user"</span> <span class="attribute">type</span>=<span class="value">"text"</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">span</span>&gt;</span>密码:<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">br</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"password"</span> <span class="attribute">name</span>=<span class="value">"password"</span> <span class="attribute">type</span>=<span class="value">"password"</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"登陆"</span> <span class="attribute">class</span>=<span class="value">"btn btn-danger"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">fieldset</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">form</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</span>&lt;%<span class="ruby"> <span class="keyword">include</span> footer.html </span>%&gt;<span class="xml"></span>
+</code></pre><p>再添加 home.html</p>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">include</span> header.html </span>%&gt;<span class="xml">
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container-fluid"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row-fluid"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">h1</span>&gt;</span>后台管理<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    </span>&lt;%<span class="ruby"> <span class="keyword">if</span> (status) { </span>%&gt;<span class="xml">  
+        <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"lead"</span>&gt;</span>欢迎您： </span>&lt;%=<span class="ruby">username</span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span> 
+        <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"label label-info"</span>&gt;</span>登陆时间： </span>&lt;%=<span class="ruby">date</span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">h3</span>&gt;</span>管理员列表<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+        </span>&lt;%<span class="ruby"> <span class="keyword">if</span> (adminlist.length) { </span>%&gt;<span class="xml">  
+            <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"table table-hover span12"</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">thead</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">th</span>&gt;</span>#<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+                <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+                <span class="tag">&lt;/<span class="title">thead</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">tbody</span>&gt;</span>
+                </span>&lt;%<span class="ruby"> adminlist.forEach(function(data){ </span>%&gt;<span class="xml">
+                    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="ruby"> data.id </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="ruby"> data.user </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="ruby"> data.password </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">td</span>&gt;</span></span>&lt;%=<span class="ruby"> data.age </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+                    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+                </span>&lt;%<span class="ruby"> }) </span>%&gt;<span class="xml">  
+                <span class="tag">&lt;/<span class="title">tbody</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">table</span>&gt;</span>
+        </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml">  
+    </span>&lt;%<span class="ruby"> } <span class="keyword">else</span> {</span>%&gt;<span class="xml">
+        <span class="tag">&lt;<span class="title">strong</span>&gt;</span>登录失败 <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/"</span>&gt;</span>回首页<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+    </span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml">  
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</span>&lt;%<span class="ruby"> <span class="keyword">include</span> footer.html </span>%&gt;<span class="xml"></span>
+</code></pre><p>此时启动 app 打开 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> 尝试登陆（用户名密码自然在上文哦~）</p>
+<blockquote>
+<p>小练习：获取 Express 中 HTTP 请求参数：query、body、params</p>
+</blockquote>
+<p>放个小图：</p>
+<p><img src="http://images.cnitblog.com/blog/531703/201503/021440193167321.gif" alt="登录前" title="登录前">  <img src="http://images.cnitblog.com/blog/531703/201503/021437450824907.gif" alt="登陆后" title="登陆后"></p>
+<blockquote>
+<p>案例小结：以上数据库操作 CURD 只是用到了 Retrieve ，其实API大同小异</p>
+</blockquote>
+<h5 id="6-3、增强案例：支持登陆并新增修改会员信息的系统，还得支持_session_~">6.3、增强案例：支持登陆并新增修改会员信息的系统，还得支持 session ~</h5><p>待续</p>
+<p>本次练习源码： <a href="https://github.com/highsea/nodejs-exercise" title="nodejs-exercise" target="_blank" rel="external">nodejs-exercise</a></p>
+<p>本文参考: <a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" title="Christopher Buecheler 从零开始搭建Node.js, Express, Jade, Mongodb服务器" target="_blank" rel="external">THE DEAD-SIMPLE STEP-BY-STEP GUIDE FOR FRONT-END DEVELOPERS TO GETTING UP AND RUNNING WITH NODE.JS, EXPRESS, JADE, AND MONGODB</a> By Christopher Buecheler</p>
+<hr>
+<p>本节完</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://airuikun.github.io/2015/12/11/2015-12-11-NodeJS实战：Express+Mongoose+ejs/" data-id="cinfqat90000c58ma0sx7u4dc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/12/2015-12-12-Mongodb For Windows/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mongodb For Windows
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/10/2015-12-10-node建站/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">node建站</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端工程/">前端工程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/我/">我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phonegap/">Phonegap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node,js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJS/">nodeJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端工程/">前端工程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术视野/">技术视野</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Phonegap/" style="font-size: 10px;">Phonegap</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mysql/" style="font-size: 12.5px;">mysql</a> <a href="/tags/node-js/" style="font-size: 10px;">node,js</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/react/" style="font-size: 12.5px;">react</a> <a href="/tags/sass/" style="font-size: 12.5px;">sass</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/分享/" style="font-size: 20px;">分享</a> <a href="/tags/前端工程/" style="font-size: 12.5px;">前端工程</a> <a href="/tags/技术视野/" style="font-size: 10px;">技术视野</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/22/2015-12-22-关于p标签的问题/">关于p标签的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-react资料汇总(持续)/">react资料汇总(持续)</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/2015-12-21-通过NPM快速发布你的NodeJS模块/">通过NPM快速发布你的NodeJS模块（组件包）</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/18/2015-12-18-react初接触/">react初接触</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/2015-12-12-Mongodb For Windows/">Mongodb For Windows</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Iray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
